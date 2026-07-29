@@ -121,20 +121,50 @@ export const STATUS_LABEL: Record<Drill["content_status"], string> = {
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
+export const SINGLEFILE = import.meta.env.VITE_SINGLEFILE === "1";
+
+interface InlineData {
+  available: boolean;
+  content: Content | null;
+  videos: VideoRegistry | null;
+  figures: Record<string, string>;
+  media: Record<string, string>;
+}
+
+let inline: InlineData | null = null;
+
+async function getInline(): Promise<InlineData | null> {
+  if (!SINGLEFILE) return null;
+  if (!inline) inline = (await import("../generated/inline-data")) as InlineData;
+  return inline.available ? inline : null;
+}
+
 export async function loadContent(): Promise<Content> {
+  const inl = await getInline();
+  if (inl?.content) return inl.content;
   const res = await fetch(`${base}/content/chapter2_section1.json`);
   if (!res.ok) throw new Error(`content load failed: ${res.status}`);
   return res.json();
 }
 
 export async function loadVideos(): Promise<VideoRegistry> {
+  const inl = await getInline();
+  if (inl?.videos) return inl.videos;
   const res = await fetch(`${base}/content/videos.json`);
   if (!res.ok) return { videos: [] };
   return res.json();
 }
 
 export function figureUrl(name: string): string {
+  if (inline?.available && inline.figures[name]) return inline.figures[name];
   return `${base}/media/figures/${name}`;
+}
+
+/** Resolve a media path (e.g. a companion video's file) to a playable URL.
+ * Returns null in single-file preview builds where the asset was excluded. */
+export function mediaUrl(path: string): string | null {
+  if (inline?.available) return inline.media[path] ?? null;
+  return `${base}${path}`;
 }
 
 export function provenanceLine(p: Provenance): string {

@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import {
+  mediaUrl,
   provenanceLine,
   type CompanionVideo,
   type Content,
@@ -194,9 +195,17 @@ export default function DrillPage({
 
       {video && (
         <Section title="Companion video">
-          <div className="video-frame">
-            <video src={video.file} controls playsInline preload="metadata" />
-          </div>
+          {mediaUrl(video.file) ? (
+            <div className="video-frame">
+              <video src={mediaUrl(video.file)!} controls playsInline preload="metadata" />
+            </div>
+          ) : (
+            <div className="pending-panel">
+              <span className="label">Not included in this preview build</span>
+              The companion video plays in the full app; it was left out of this
+              single-file preview to keep it small.
+            </div>
+          )}
           <div className="cadence-line">{video.on_screen_text.timing_cadence}</div>
           {video.on_screen_text.technique_cues.map((c) => (
             <div className="cue-block" key={c.beat_label}>
