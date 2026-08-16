@@ -10,12 +10,16 @@ import "@fontsource/ibm-plex-mono/400.css";
 import "./theme.css";
 import App from "./App";
 
-const Router = SINGLEFILE ? HashRouter : BrowserRouter;
-
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Router>
-      <App />
-    </Router>
+    {SINGLEFILE ? (
+      <HashRouter>
+        <App />
+      </HashRouter>
+    ) : (
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <App />
+      </BrowserRouter>
+    )}
   </StrictMode>,
 );

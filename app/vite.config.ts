@@ -10,6 +10,8 @@ import { VitePWA } from "vite-plugin-pwa";
 const singlefile = process.env.PREVIEW_SINGLEFILE === "1";
 
 export default defineConfig({
+  // Set BASE_PATH=/repo-name/ when deploying to a GitHub Pages project site.
+  base: process.env.BASE_PATH || "/",
   plugins: [
     react(),
     ...(singlefile
