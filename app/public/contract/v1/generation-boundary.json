@@ -1,0 +1,58 @@
+{
+  "contract_version": "1.0.0",
+  "description": "Generation-Boundary Manifest. Classifies copilot job types against this platform's data contract. Integrators building the Trainer Copilot must not implement 'forbidden' jobs against this contract, and must gate 'composition_adjacent' jobs behind mandatory human review.",
+  "pure_retrieval": [
+    {
+      "job": "manual_qa_with_citations",
+      "detail": "Answer trainer questions by returning exact fields from the canonical content JSON, always citing the field's provenance (table caption + doc version). Refuse with 'Not yet authorized in the source manual' when the field is pending."
+    },
+    {
+      "job": "glossary_lookup",
+      "detail": "Return Malay/English pairs from the glossary and roster tables verbatim."
+    },
+    {
+      "job": "command_phrasing_breakdown",
+      "detail": "Return a drill's Structure of Command grid verbatim (introductory/cautionary/pause/executionary rows, tones, syllable splits)."
+    },
+    {
+      "job": "fault_checklist_assembly",
+      "detail": "Assemble the Common Faults bullets for a drill (optionally per stage) verbatim, grouped by stage. Formatting only; no rewording."
+    },
+    {
+      "job": "layout_ratio_lookup",
+      "detail": "Given a squad size, return the manual's matching layout/ratio rows for the documented bands (<=24, >24). Sizes outside documented bands must be flagged as undocumented, never extrapolated."
+    },
+    {
+      "job": "coverage_status_report",
+      "detail": "Report per-drill content_status, missing tables, and pending figure slots from the manifest."
+    }
+  ],
+  "composition_adjacent_requires_human_review": [
+    {
+      "job": "lesson_plan_adaptation",
+      "detail": "Sequencing sourced tables against trainer-supplied context (squad size, time available). Every output line must be tagged manual-sourced vs trainer-supplied/composed."
+    },
+    {
+      "job": "templated_debrief_report",
+      "detail": "Strictly templated counts-only summaries of logged fault data. No causal language, no diagnosis, no severity judgments beyond counts."
+    }
+  ],
+  "forbidden": [
+    {
+      "job": "authoring_technique_cues",
+      "detail": "Composing new technique-cue wording, new commands, new tempo/timing values, or any physical-execution guidance not verbatim in the sourced fields."
+    },
+    {
+      "job": "quiz_item_generation",
+      "detail": "Composing quiz questions or multiple-choice distractors. Assessment items must be SME-authored and approved as their own content type with provenance."
+    },
+    {
+      "job": "gap_filling",
+      "detail": "Answering from general knowledge, other militaries' drill standards, or inference when the sourced field is pending or absent."
+    },
+    {
+      "job": "media_generation",
+      "detail": "Generating or sourcing stand-in imagery, audio, or video for pending figure slots. Only approved uploads fulfil figure slots."
+    }
+  ]
+}

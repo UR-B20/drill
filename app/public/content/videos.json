@@ -1,0 +1,29 @@
+{
+  "note": "Companion video registry. on_screen_text fields are verbatim transcriptions of text visible in the video itself — no content is authored here. Fields not yet transcribed are marked pending.",
+  "videos": [
+    {
+      "video_id": "v.dismissing.bersurai.01",
+      "file": "/media/videos/skuad-bersurai.mp4",
+      "drill_id": "dismissing",
+      "figure_slot_ref": null,
+      "duration_seconds": 46,
+      "format": "portrait 1080x1934",
+      "approval_status": "provided_by_owner",
+      "provenance": {
+        "source": "companion_video_upload",
+        "original_filename": "WhatsApp_Video_20260728_at_11.23.45_AM.mp4"
+      },
+      "on_screen_text": {
+        "command_display": "SKUAD BERSU… RAI",
+        "gloss_bar": "SKUAD, DISMISS",
+        "timing_cadence": "TIMING FOR DRILL: ONE, CHECK, BANG, CHECK / LEFT, RIGHT, LEFT, / CHECK BANG",
+        "technique_cues": [
+          { "beat_label": "ONE", "cues": ["Eyes front", "Body square front", "Arms side of body", "Turn to right"] },
+          { "beat_label": "RIGHT", "cues": ["Kick out right feet", "Heel touch ground", "Left arm swing 90 forward", "Right arms swing 45 backward", "Clenched Fist"] },
+          { "beat_label": "BANG", "cues": ["Head, body square front", "Lift thigh parallel to ground", "Stomp feet double quick time"] }
+        ],
+        "full_beat_map_status": "pending_transcription"
+      }
+    }
+  ]
+}

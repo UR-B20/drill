@@ -1,0 +1,147 @@
+{
+ "contract_version": "1.0.0",
+ "read_only": true,
+ "grounding_rule": "Every answer must cite the provenance of the field it came from. Any query touching a field whose status is pending must be answered with the standard refusal: 'Not yet authorized in the source manual.' No endpoint in this contract permits authoring, inferring, or paraphrasing drill content.",
+ "source": {
+  "source_doc_id": "saf-drill-manual",
+  "doc_version": "chapter2-caa-13-aug-26-draft",
+  "chapter": 2,
+  "section": 1,
+  "section_title": "Stationary Drills"
+ },
+ "ingestion": {
+  "method": "deterministic-table-extraction",
+  "generator": "scripts/ingest_chapter2.py",
+  "no_llm_in_path": true
+ },
+ "endpoints": {
+  "canonical_content": "/content/chapter2_section1.json",
+  "companion_videos": "/content/videos.json",
+  "generation_boundary": "/contract/v1/generation-boundary.json"
+ },
+ "drills": [
+  {
+   "drill_id": "attention",
+   "names": {
+    "malay": "Sedi-A",
+    "english": "Attention"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "at_ease",
+   "names": {
+    "malay": "Senang Di-Ri / Rehatkan Diri",
+    "english": "At Ease / Stand Easy"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "turning_during_halt",
+   "names": {
+    "malay": "Ke-Kiri/Ke-Kanan/Ke-Belakang Pu-Sing",
+    "english": "Turning During Halt"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "dressing",
+   "names": {
+    "malay": "Dalam Buka/Tutup Barisan, Ke-Kanan Lurus",
+    "english": "Dressing"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "bow",
+   "names": {
+    "malay": "Tun-Dok",
+    "english": "Bow"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "salutation",
+   "names": {
+    "malay": "Hormat",
+    "english": "Salutation"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "mark_time",
+   "names": {
+    "malay": "Hentak Kaki Cepat, Hen-Tak",
+    "english": "Mark Time"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "three_cheers",
+   "names": {
+    "malay": "Baris Akan Beri Tiga Sorakan…",
+    "english": "Three Cheers"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "pledge",
+   "names": {
+    "malay": "Ta'at Seti-A",
+    "english": "Recitation of Pledge/Creed"
+   },
+   "content_status": "complete",
+   "missing_tables": [],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "side_pace",
+   "names": {
+    "malay": "…Langkah Ke Sebelah…, Gerak",
+    "english": "Side Pace"
+   },
+   "content_status": "name_only",
+   "missing_tables": [
+    "structure_of_command",
+    "word_of_command",
+    "stages_tables",
+    "layout_ratio",
+    "moi_sequence"
+   ],
+   "pending_figure_slots": 0
+  },
+  {
+   "drill_id": "dismissing",
+   "names": {
+    "malay": "Skuad, Bersu-Rai / Skuad, Keluar Baris",
+    "english": "Dismissing and Falling Out"
+   },
+   "content_status": "name_only",
+   "missing_tables": [
+    "structure_of_command",
+    "word_of_command",
+    "stages_tables",
+    "layout_ratio",
+    "moi_sequence"
+   ],
+   "pending_figure_slots": 0
+  }
+ ],
+ "glossary_terms": 7
+}
