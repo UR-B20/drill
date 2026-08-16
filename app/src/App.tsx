@@ -10,6 +10,8 @@ import RosterPage from "./pages/RosterPage";
 import DrillPage from "./pages/DrillPage";
 import GlossaryPage from "./pages/GlossaryPage";
 import RevisePage from "./pages/RevisePage";
+import CramPage from "./pages/CramPage";
+import BuddyCheckPage from "./pages/BuddyCheckPage";
 import { SessionRunner, SessionSummary, TrainerHome } from "./pages/TrainerPage";
 
 type ThemePref = "auto" | "light" | "dark";
@@ -93,6 +95,8 @@ export default function App() {
             <Route path="/drill/:id" element={<DrillPage content={content} videos={videos} />} />
             <Route path="/glossary" element={<GlossaryPage content={content} />} />
             <Route path="/revise" element={<RevisePage content={content} />} />
+            <Route path="/cram" element={<CramPage content={content} />} />
+            <Route path="/buddy/:id" element={<BuddyCheckPage content={content} />} />
             <Route path="/trainer" element={<TrainerHome content={content} />} />
             <Route path="/trainer/session/:id" element={<SessionRunner content={content} />} />
             <Route path="/trainer/summary/:id" element={<SessionSummary content={content} />} />

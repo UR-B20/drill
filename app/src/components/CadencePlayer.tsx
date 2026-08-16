@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { WocRow } from "../lib/content";
+import { useWakeLock } from "../lib/useWakeLock";
 
 /** Practice metronome for a Word-of-Command row. The manual specifies the
  * trigger point and the squad call-out — it does not specify paces per
@@ -10,6 +11,7 @@ export default function CadencePlayer({ row }: { row: WocRow }) {
   const [beat, setBeat] = useState(0);
   const ctxRef = useRef<AudioContext | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  useWakeLock(running);
 
   useEffect(() => {
     localStorage.setItem("cadence.tempo", String(tempo));

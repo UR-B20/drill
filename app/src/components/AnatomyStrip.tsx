@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { TableRec } from "../lib/content";
+import { useWakeLock } from "../lib/useWakeLock";
 
 /** Parsed from the Structure of Command grid — text stays verbatim; this
  * component only re-lays-out the manual's own cells. */
@@ -62,6 +63,7 @@ export default function AnatomyStrip({ table }: { table: TableRec }) {
   const [variantIdx, setVariantIdx] = useState(0);
   const [phase, setPhase] = useState<Phase>("idle");
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  useWakeLock(phase !== "idle");
 
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
 

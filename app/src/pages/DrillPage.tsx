@@ -13,6 +13,9 @@ import {
 } from "../components/common";
 import AnatomyStrip from "../components/AnatomyStrip";
 import CadencePlayer from "../components/CadencePlayer";
+import VideoPractice from "../components/VideoPractice";
+import RecordCompare from "../components/RecordCompare";
+import { recordsFor } from "../lib/practice";
 
 export default function DrillPage({
   content,
@@ -236,9 +239,7 @@ export default function DrillPage({
       {video && (
         <Section title="Companion video">
           {mediaUrl(video.file) ? (
-            <div className="video-frame">
-              <video src={mediaUrl(video.file)!} controls playsInline preload="metadata" />
-            </div>
+            <VideoPractice src={mediaUrl(video.file)!} drillId={drill.drill_id} />
           ) : (
             <div className="pending-panel">
               <span className="label">Not included in this preview build</span>
@@ -265,6 +266,49 @@ export default function DrillPage({
           </div>
         </Section>
       )}
+
+      <Section title="Voice practice">
+        <RecordCompare
+          referenceSrc={video ? mediaUrl(video.file) : null}
+          drillId={drill.drill_id}
+        />
+      </Section>
+
+      <Section title="Practice">
+        <Link to={`/buddy/${drill.drill_id}`} className="big-btn" style={{ textAlign: "center", textDecoration: "none" }}>
+          Buddy check ›
+        </Link>
+        {(() => {
+          const recent = recordsFor(drill.drill_id).slice(-5).reverse();
+          if (recent.length === 0) return null;
+          return (
+            <>
+              <div className="eyebrow" style={{ marginTop: 14 }}>
+                Recent practice on this device
+              </div>
+              {recent.map((r, i) => (
+                <div className="woc-card" key={i}>
+                  <div className="eyebrow">
+                    {new Date(r.at).toLocaleDateString()} ·{" "}
+                    {r.source === "buddy" ? "buddy-checked" : "self"}
+                  </div>
+                  <div style={{ fontSize: 14 }}>
+                    {r.source === "buddy"
+                      ? r.faults.length
+                        ? r.faults.join("; ")
+                        : "No faults observed."
+                      : "Practice session."}
+                  </div>
+                </div>
+              ))}
+              <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
+                Self and buddy records only — a qualified trainer confirms the
+                standard in person.
+              </p>
+            </>
+          );
+        })()}
+      </Section>
 
       <div className="drill-pager">
         {prev ? (
