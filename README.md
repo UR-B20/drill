@@ -47,9 +47,11 @@ python3 scripts/export_contract.py
 
 Both scripts are deterministic — output diffs correspond 1:1 to source diffs.
 
-## Current content coverage (from the source draft)
+## Current content coverage (from the 13 Aug source draft)
 
-2 drills complete, 4 partial, 5 name-only (their instruction tables are empty
-in the draft). One companion video (Skuad, Bersurai). The app renders the gaps
+9 drills complete (Attention, At Ease, Turning During Halt, Dressing, Bow,
+Salutation, Mark Time, Three Cheers, Pledge/Creed); Side Pace and Dismissing
+are name-only — the earlier draft's trailing tables for them were removed in
+this revision. One companion video (Skuad, Bersurai). The app renders gaps
 honestly; they close by revising the source manual and re-ingesting, never by
 authoring content here.

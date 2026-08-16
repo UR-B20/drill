@@ -451,3 +451,18 @@ table.verbatim tr:first-child td, table.verbatim th {
   text-align: center;
 }
 .status-chip.stale { color: var(--fault); margin-left: 6px; }
+
+/* ---------- demonstration deck & buddy figures ---------- */
+.demo-scroll {
+  display: flex; gap: 10px; overflow-x: auto; margin-top: 8px;
+  scroll-snap-type: x mandatory; padding-bottom: 6px;
+}
+.demo-card {
+  flex: 0 0 78%; scroll-snap-align: start;
+  border: 1px solid var(--hairline); background: var(--surface);
+  padding: 10px;
+}
+.demo-card img { max-width: 100%; max-height: 240px; display: block; background: #fff; margin-top: 6px; }
+.demo-cmd { font-family: var(--font-display); font-weight: 600; font-size: 15px; text-transform: uppercase; margin-top: 6px; }
+.buddy-figs { display: flex; gap: 8px; overflow-x: auto; margin-top: 8px; }
+.buddy-figs img { max-height: 170px; background: #fff; }

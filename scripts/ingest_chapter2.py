@@ -31,7 +31,7 @@ PLACEHOLDER_RE = re.compile(r"\[Insert[^\]]*\]", re.IGNORECASE)
 
 SOURCE_DOC = {
     "source_doc_id": "saf-drill-manual",
-    "doc_version": "chapter2-caa-8-jul-26-draft",
+    "doc_version": "chapter2-caa-13-aug-26-draft",
     "chapter": 2,
     "section": 1,
     "section_title": "Stationary Drills",
@@ -61,6 +61,13 @@ DRILL_OF_CAPTION = [
     ("for Salutation", "salutation"),
     ("The Salutation Break into Stages", "salutation"),
     ("Salutation Break into Stages", "salutation"),
+    ("for the Mark Time", "mark_time"),
+    ("for Mark Time", "mark_time"),
+    ("Mark Time Break into Stages", "mark_time"),
+    ("for the Three Cheers", "three_cheers"),
+    ("for Three Cheers", "three_cheers"),
+    ("Three Cheers Break into Stages", "three_cheers"),
+    ("Recitation of Pledge", "pledge"),
 ]
 
 TABLE_KIND = [
@@ -149,12 +156,34 @@ def table_grid(tbl, rels):
     return grid
 
 
-def classify(caption):
+# Header-row shapes are the most reliable classifier — the draft's captions
+# contain copy/paste errors (e.g. an MOI table carrying the preceding layout
+# table's caption), while header rows are consistent throughout.
+HEADER_KIND = [
+    (("stage", "what to do"), "moi_sequence"),
+    (("stages", "command"), "stages"),
+    (("type of drills", "trainees"), "layout_ratio"),
+    (("word of command",), "word_of_command"),
+    (("full command",), "structure_of_command"),
+    (("malay word", "english word"), "glossary"),
+    (("s/n", "stationary drills"), "roster"),
+]
+
+
+def classify(caption, grid=None):
     kind = None
-    for marker, k in TABLE_KIND:
-        if marker.lower() in caption.lower():
-            kind = k
-            break
+    if grid and grid[0]:
+        header = [c["text"].lower() for c in grid[0][:3]]
+        joined = " | ".join(header)
+        for needles, k in HEADER_KIND:
+            if all(any(n in h for h in header) or n in joined for n in needles):
+                kind = k
+                break
+    if kind is None:
+        for marker, k in TABLE_KIND:
+            if marker.lower() in caption.lower():
+                kind = k
+                break
     drill = None
     for marker, d in DRILL_OF_CAPTION:
         if marker.lower() in caption.lower():
@@ -276,7 +305,14 @@ def main():
 
         grid = table_grid(block, rels)
         caption = last_caption
-        kind, drill = classify(caption)
+        # Some tables carry their own caption as a single spanning first row
+        # (e.g. "Table 2-1-7: Sequence of Instructions for Attention" while
+        # the preceding caption paragraph is a stale copy of the previous
+        # table's). The embedded caption is authoritative; lift it out.
+        if grid and len(grid[0]) == 1 and grid[0][0]["text"].lower().startswith("table"):
+            caption = grid[0][0]["text"]
+            grid = grid[1:]
+        kind, drill = classify(caption, grid)
         # The draft contains at least one layout table whose caption names the
         # wrong drill; the table's own first column names the drill it belongs
         # to, so for layout tables the row content is authoritative.

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import type { Content } from "../lib/content";
+import { figureUrl, type Content } from "../lib/content";
 import { markPracticed } from "../lib/practice";
 import { PendingPanel } from "../components/common";
 import { useWakeLock } from "../lib/useWakeLock";
@@ -30,6 +30,7 @@ export default function BuddyCheckPage({ content }: { content: Content }) {
       .map((s) => ({
         label: `${st.caption_verbatim.replace(/^Table [\d-]+:?\s*/i, "").replace(/ Break into Stages.*$/i, "")} — stage ${s.stage_label.replace(/\s*\n\s*/g, " ")}`,
         faults: s.common_faults,
+        images: s.figure_reference.images ?? [],
       })),
   );
 
@@ -102,6 +103,17 @@ export default function BuddyCheckPage({ content }: { content: Content }) {
         stageGroups.map((g) => (
           <div key={g.label} style={{ marginTop: 18 }}>
             <div className="eyebrow">{g.label}</div>
+            {g.images.length > 0 && (
+              <div className="buddy-figs">
+                {g.images.map((img) => (
+                  <img
+                    key={img}
+                    src={figureUrl(img)}
+                    alt={`Reference figure — ${g.label}`}
+                  />
+                ))}
+              </div>
+            )}
             {g.faults.map((f) => (
               <button
                 key={f}

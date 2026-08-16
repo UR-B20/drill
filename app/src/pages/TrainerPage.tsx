@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { STATUS_LABEL, provenanceLine, type Content } from "../lib/content";
+import {
+  STATUS_LABEL,
+  figureUrl,
+  provenanceLine,
+  type Content,
+  type Drill,
+} from "../lib/content";
 import { PendingPanel, Section, VerbatimTable } from "../components/common";
 
 interface RepEntry {
@@ -168,6 +174,52 @@ export function TrainerHome({ content }: { content: Content }) {
   );
 }
 
+/** Stage-by-stage demonstration deck: the manual's stage figures and faults,
+ * surfaced while the trainer runs the Demonstration passes. */
+function DemoDeck({ drill }: { drill: Drill }) {
+  const stages = drill.stages_tables.flatMap((st) =>
+    st.stages.map((s) => ({
+      table: st.caption_verbatim
+        .replace(/^Table [\d-]+:?\s*/i, "")
+        .replace(/ Break into Stages.*$/i, ""),
+      stage: s.stage_label.replace(/\s*\n\s*/g, " "),
+      command: s.command_verbatim,
+      images: s.figure_reference.images ?? [],
+      faults: s.common_faults,
+    })),
+  );
+  if (stages.length === 0) return null;
+  return (
+    <div className="demo-deck">
+      <div className="eyebrow" style={{ marginTop: 14 }}>
+        Demonstration deck — stages &amp; watch-for faults
+      </div>
+      <div className="demo-scroll">
+        {stages.map((s, i) => (
+          <div className="demo-card" key={i}>
+            <div className="eyebrow">
+              {s.table} · stage {s.stage}
+            </div>
+            {s.images.map((img) => (
+              <img key={img} src={figureUrl(img)} alt={`${s.table} stage ${s.stage} figure`} />
+            ))}
+            {s.command && <div className="demo-cmd">{s.command}</div>}
+            {s.faults.length > 0 && (
+              <ul className="fault-list">
+                {s.faults.slice(0, 4).map((f, fi) => (
+                  <li key={fi} style={{ fontSize: 13 }}>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function SessionRunner({ content }: { content: Content }) {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -220,6 +272,7 @@ export function SessionRunner({ content }: { content: Content }) {
   const moiRows = drill.moi_sequence?.rows ?? [];
   const current = moiRows[state.stageIndex];
   const isPractice = current?.stage.toLowerCase().includes("practice");
+  const isDemo = current?.stage.toLowerCase().includes("demonstration");
   const uniqueFaults = [
     ...new Set(
       drill.stages_tables.flatMap((st) => st.stages.flatMap((s) => s.common_faults)),
@@ -287,6 +340,7 @@ export function SessionRunner({ content }: { content: Content }) {
               </li>
             ))}
           </ol>
+          {isDemo && <DemoDeck drill={drill} />}
           <div style={{ display: "flex", gap: 8 }}>
             <button
               className="big-btn"

@@ -118,10 +118,12 @@ function QuestionPrompts({ content }: { content: Content }) {
         r.stage.toLowerCase().includes("question"),
       );
       if (!qRow || qRow.status === "pending") continue;
+      // Questions in the manual end with a closing curly quote after the
+      // question mark (e.g. “What is the meaning of Sedi-A?”).
       const questions = qRow.what_to_do_or_say
         .split("\n")
         .map((s) => s.trim())
-        .filter((s) => s.endsWith("?"));
+        .filter((s) => /\?[”"']?$/.test(s));
       for (const q of questions) {
         out.push({
           drillId: d.drill_id,
