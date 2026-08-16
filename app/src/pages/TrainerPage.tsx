@@ -1,14 +1,22 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { STATUS_LABEL, type Content } from "../lib/content";
+import { STATUS_LABEL, provenanceLine, type Content } from "../lib/content";
 import { PendingPanel, Section, VerbatimTable } from "../components/common";
+
+interface RepEntry {
+  rep: number;
+  faults: string[];
+}
 
 interface SessionState {
   squadSize: number;
   stageIndex: number;
   reps: number;
   faultCounts: Record<string, number>;
+  currentRepFaults: string[];
+  repLog: RepEntry[];
   acknowledgedPending: boolean;
+  startedAt: string;
 }
 
 function sessionKey(drillId: string) {
@@ -18,7 +26,11 @@ function sessionKey(drillId: string) {
 function loadSession(drillId: string): SessionState | null {
   try {
     const raw = localStorage.getItem(sessionKey(drillId));
-    return raw ? (JSON.parse(raw) as SessionState) : null;
+    if (!raw) return null;
+    const s = JSON.parse(raw) as SessionState;
+    s.currentRepFaults ??= [];
+    s.repLog ??= [];
+    return s;
   } catch {
     return null;
   }
@@ -40,6 +52,21 @@ export function TrainerHome({ content }: { content: Content }) {
         ? r.trainees.toLowerCase().includes("less")
         : r.trainees.toLowerCase().includes("more"),
     ) ?? [];
+
+  const startSession = (acknowledged: boolean) => {
+    if (!drill) return;
+    saveSession(drill.drill_id, {
+      squadSize,
+      stageIndex: 0,
+      reps: 0,
+      faultCounts: {},
+      currentRepFaults: [],
+      repLog: [],
+      acknowledgedPending: acknowledged,
+      startedAt: new Date().toISOString(),
+    });
+    navigate(`/trainer/session/${drill.drill_id}`);
+  };
 
   return (
     <>
@@ -107,20 +134,17 @@ export function TrainerHome({ content }: { content: Content }) {
           </Section>
 
           <Section title="3 · Run">
-            {drill.moi_sequence?.complete ? (
-              <button
-                className="big-btn"
-                onClick={() => {
-                  saveSession(drill.drill_id, {
-                    squadSize,
-                    stageIndex: 0,
-                    reps: 0,
-                    faultCounts: {},
-                    acknowledgedPending: false,
-                  });
-                  navigate(`/trainer/session/${drill.drill_id}`);
-                }}
+            {loadSession(drill.drill_id) && (
+              <Link
+                to={`/trainer/session/${drill.drill_id}`}
+                className="drill-card"
+                style={{ display: "block" }}
               >
+                Resume previous session ›
+              </Link>
+            )}
+            {drill.moi_sequence?.complete ? (
+              <button className="big-btn" onClick={() => startSession(false)}>
                 Start session
               </button>
             ) : (
@@ -132,20 +156,8 @@ export function TrainerHome({ content }: { content: Content }) {
                       : "This drill has no Sequence of Instructions in the source draft. You may open the session in reference-only mode; the app will not fill the gaps."
                   }
                 />
-                <button
-                  className="big-btn"
-                  onClick={() => {
-                    saveSession(drill.drill_id, {
-                      squadSize,
-                      stageIndex: 0,
-                      reps: 0,
-                      faultCounts: {},
-                      acknowledgedPending: true,
-                    });
-                    navigate(`/trainer/session/${drill.drill_id}`);
-                  }}
-                >
-                  Acknowledge gap & open
+                <button className="big-btn" onClick={() => startSession(true)}>
+                  Acknowledge gap &amp; open
                 </button>
               </>
             )}
@@ -158,6 +170,7 @@ export function TrainerHome({ content }: { content: Content }) {
 
 export function SessionRunner({ content }: { content: Content }) {
   const { id } = useParams();
+  const navigate = useNavigate();
   const drill = content.drills.find((d) => d.drill_id === id);
   const [state, setState] = useState<SessionState | null>(() =>
     id ? loadSession(id) : null,
@@ -177,19 +190,55 @@ export function SessionRunner({ content }: { content: Content }) {
     saveSession(drill.drill_id, next);
   };
 
+  const tagFault = (f: string) =>
+    update({
+      faultCounts: { ...state.faultCounts, [f]: (state.faultCounts[f] ?? 0) + 1 },
+      currentRepFaults: [...state.currentRepFaults, f],
+    });
+
+  const undoFault = () => {
+    const last = state.currentRepFaults[state.currentRepFaults.length - 1];
+    if (!last) return;
+    update({
+      faultCounts: {
+        ...state.faultCounts,
+        [last]: Math.max(0, (state.faultCounts[last] ?? 1) - 1),
+      },
+      currentRepFaults: state.currentRepFaults.slice(0, -1),
+    });
+  };
+
+  const semula = () => {
+    if ("vibrate" in navigator) navigator.vibrate(80);
+    update({
+      reps: state.reps + 1,
+      repLog: [...state.repLog, { rep: state.reps + 1, faults: state.currentRepFaults }],
+      currentRepFaults: [],
+    });
+  };
+
   const moiRows = drill.moi_sequence?.rows ?? [];
   const current = moiRows[state.stageIndex];
   const isPractice = current?.stage.toLowerCase().includes("practice");
-  const allFaults = drill.stages_tables.flatMap((st) =>
-    st.stages.flatMap((s) => s.common_faults),
-  );
-  const uniqueFaults = [...new Set(allFaults)];
+  const uniqueFaults = [
+    ...new Set(
+      drill.stages_tables.flatMap((st) => st.stages.flatMap((s) => s.common_faults)),
+    ),
+  ];
 
   return (
     <>
-      <Link to="/trainer" style={{ color: "var(--muted)", fontSize: 14 }}>
-        ‹ End session
-      </Link>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Link to="/trainer" style={{ color: "var(--muted)", fontSize: 14 }}>
+          ‹ Prep
+        </Link>
+        <button
+          className="theme-btn"
+          onClick={() => navigate(`/trainer/summary/${drill.drill_id}`)}
+        >
+          End session — debrief ›
+        </button>
+      </div>
       <h1 className="command-display" style={{ fontSize: "clamp(26px,8vw,38px)" }}>
         {drill.names.malay}
       </h1>
@@ -198,7 +247,10 @@ export function SessionRunner({ content }: { content: Content }) {
       </div>
 
       {moiRows.length > 0 ? (
-        <Section title="Sequence of instructions" provenance={drill.moi_sequence!.table.provenance}>
+        <Section
+          title="Sequence of instructions"
+          provenance={drill.moi_sequence!.table.provenance}
+        >
           <ol className="moi-rail">
             {moiRows.map((row, i) => (
               <li
@@ -268,31 +320,26 @@ export function SessionRunner({ content }: { content: Content }) {
         <Section title="Practice — fault tagging">
           {uniqueFaults.length > 0 ? (
             <>
+              <div className="rep-counter">
+                Rep {state.reps + 1} in progress — {state.currentRepFaults.length} fault
+                {state.currentRepFaults.length === 1 ? "" : "s"} tagged this rep
+                {state.currentRepFaults.length > 0 && (
+                  <button className="theme-btn" style={{ marginLeft: 8 }} onClick={undoFault}>
+                    undo
+                  </button>
+                )}
+              </div>
               {uniqueFaults.map((f) => (
-                <button
-                  key={f}
-                  className="fault-chip"
-                  onClick={() =>
-                    update({
-                      faultCounts: {
-                        ...state.faultCounts,
-                        [f]: (state.faultCounts[f] ?? 0) + 1,
-                      },
-                    })
-                  }
-                >
+                <button key={f} className="fault-chip" onClick={() => tagFault(f)}>
                   <span className="count">{state.faultCounts[f] ?? 0}</span>
                   {f}
                 </button>
               ))}
-              <button
-                className="big-btn semula"
-                onClick={() => update({ reps: state.reps + 1 })}
-              >
+              <button className="big-btn semula" onClick={semula}>
                 Semula — as you were
               </button>
               <div className="rep-counter">
-                Reps this session: {state.reps} · Faults tagged:{" "}
+                Completed reps: {state.reps} · total faults:{" "}
                 {Object.values(state.faultCounts).reduce((a, b) => a + b, 0)}
               </div>
             </>
@@ -301,6 +348,126 @@ export function SessionRunner({ content }: { content: Content }) {
           )}
         </Section>
       )}
+    </>
+  );
+}
+
+export function SessionSummary({ content }: { content: Content }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const drill = content.drills.find((d) => d.drill_id === id);
+  const [state] = useState<SessionState | null>(() => (id ? loadSession(id) : null));
+  const [copied, setCopied] = useState(false);
+
+  if (!drill || !state) {
+    return (
+      <p>
+        No session data. <Link to="/trainer">Back to session prep</Link>
+      </p>
+    );
+  }
+
+  const totalFaults = Object.values(state.faultCounts).reduce((a, b) => a + b, 0);
+  const faultRows = Object.entries(state.faultCounts)
+    .filter(([, n]) => n > 0)
+    .sort((a, b) => b[1] - a[1]);
+  const repLog = state.currentRepFaults.length
+    ? [...state.repLog, { rep: state.reps + 1, faults: state.currentRepFaults }]
+    : state.repLog;
+
+  const summaryText = [
+    `Session debrief — ${drill.names.english} (${drill.names.malay})`,
+    `Squad size: ${state.squadSize} · Reps: ${state.reps} · Faults tagged: ${totalFaults}`,
+    ``,
+    `Fault counts (manual's own fault vocabulary):`,
+    ...faultRows.map(([f, n]) => `  ${n}× ${f}`),
+    ``,
+    `Per rep:`,
+    ...repLog.map((r) =>
+      r.faults.length
+        ? `  Rep ${r.rep}: ${r.faults.join("; ")}`
+        : `  Rep ${r.rep}: no faults tagged`,
+    ),
+    ``,
+    provenanceLine(content.manual),
+  ].join("\n");
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(summaryText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* clipboard unavailable — text stays visible below */
+    }
+  };
+
+  const endSession = () => {
+    localStorage.removeItem(sessionKey(drill.drill_id));
+    navigate("/trainer");
+  };
+
+  return (
+    <>
+      <Link to={`/trainer/session/${drill.drill_id}`} style={{ color: "var(--muted)", fontSize: 14 }}>
+        ‹ Back to session
+      </Link>
+      <h1 className="command-display" style={{ fontSize: "clamp(26px,8vw,38px)" }}>
+        Debrief
+      </h1>
+      <div className="gloss-bar">
+        {drill.names.english} · squad of {state.squadSize}
+      </div>
+
+      <Section title="Totals">
+        <div className="totals-row mono">
+          <span>{state.reps} rep{state.reps === 1 ? "" : "s"}</span>
+          <span>{totalFaults} fault{totalFaults === 1 ? "" : "s"} tagged</span>
+        </div>
+        {faultRows.length > 0 ? (
+          faultRows.map(([f, n]) => (
+            <div className="fault-chip" key={f} style={{ cursor: "default" }}>
+              <span className="count">{n}</span>
+              {f}
+            </div>
+          ))
+        ) : (
+          <p style={{ color: "var(--muted)", fontSize: 14 }}>No faults tagged.</p>
+        )}
+      </Section>
+
+      {repLog.length > 0 && (
+        <Section title="Per rep">
+          {repLog.map((r) => (
+            <div className="woc-card" key={r.rep}>
+              <div className="eyebrow">
+                Rep {r.rep}
+                {r.rep > state.reps ? " (in progress)" : ""}
+              </div>
+              <div style={{ fontSize: 14.5 }}>
+                {r.faults.length ? r.faults.join("; ") : "No faults tagged."}
+              </div>
+            </div>
+          ))}
+        </Section>
+      )}
+
+      <Section title="Hand-off">
+        <p style={{ fontSize: 13.5, color: "var(--muted)" }}>
+          Counts only — observations are limited to the manual's own fault
+          vocabulary as tagged live by the trainer.
+        </p>
+        <button className="big-btn" onClick={copy}>
+          {copied ? "Copied" : "Copy debrief text"}
+        </button>
+        <button
+          className="big-btn"
+          style={{ background: "var(--surface)", color: "var(--ink)", border: "1px solid var(--hairline)" }}
+          onClick={endSession}
+        >
+          Close session &amp; clear
+        </button>
+      </Section>
     </>
   );
 }

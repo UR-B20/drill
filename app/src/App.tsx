@@ -9,7 +9,8 @@ import {
 import RosterPage from "./pages/RosterPage";
 import DrillPage from "./pages/DrillPage";
 import GlossaryPage from "./pages/GlossaryPage";
-import { SessionRunner, TrainerHome } from "./pages/TrainerPage";
+import RevisePage from "./pages/RevisePage";
+import { SessionRunner, SessionSummary, TrainerHome } from "./pages/TrainerPage";
 
 type ThemePref = "auto" | "light" | "dark";
 
@@ -26,12 +27,18 @@ export default function App() {
   const [theme, setTheme] = useState<ThemePref>(
     () => (localStorage.getItem("themePref") as ThemePref) || "auto",
   );
+  const [glare, setGlare] = useState(() => localStorage.getItem("glare") === "1");
   const location = useLocation();
 
   useEffect(() => {
     applyTheme(theme);
     localStorage.setItem("themePref", theme);
   }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-glare", glare);
+    localStorage.setItem("glare", glare ? "1" : "0");
+  }, [glare]);
 
   useEffect(() => {
     loadContent().then(setContent).catch((e) => setError(String(e)));
@@ -46,15 +53,25 @@ export default function App() {
         <Link to="/" className="title">
           SAF Drill Coach
         </Link>
-        <button
-          className="theme-btn"
-          onClick={() =>
-            setTheme(theme === "auto" ? "dark" : theme === "dark" ? "light" : "auto")
-          }
-          aria-label="Cycle color theme"
-        >
-          theme: {theme}
-        </button>
+        <div style={{ display: "flex", gap: 6 }}>
+          <button
+            className={`theme-btn ${glare ? "glare-on" : ""}`}
+            onClick={() => setGlare(!glare)}
+            aria-pressed={glare}
+            aria-label="Toggle outdoor high-contrast mode"
+          >
+            ☀ outdoor
+          </button>
+          <button
+            className="theme-btn"
+            onClick={() =>
+              setTheme(theme === "auto" ? "dark" : theme === "dark" ? "light" : "auto")
+            }
+            aria-label="Cycle color theme"
+          >
+            {theme}
+          </button>
+        </div>
       </header>
       {!isTrainer && (
         <div className="supervision-note">
@@ -75,8 +92,10 @@ export default function App() {
             <Route path="/" element={<RosterPage content={content} />} />
             <Route path="/drill/:id" element={<DrillPage content={content} videos={videos} />} />
             <Route path="/glossary" element={<GlossaryPage content={content} />} />
+            <Route path="/revise" element={<RevisePage content={content} />} />
             <Route path="/trainer" element={<TrainerHome content={content} />} />
             <Route path="/trainer/session/:id" element={<SessionRunner content={content} />} />
+            <Route path="/trainer/summary/:id" element={<SessionSummary content={content} />} />
           </Routes>
         )}
       </main>
@@ -87,6 +106,9 @@ export default function App() {
           </NavLink>
           <NavLink to="/glossary" className={({ isActive }) => (isActive ? "active" : "")}>
             Glossary
+          </NavLink>
+          <NavLink to="/revise" className={({ isActive }) => (isActive ? "active" : "")}>
+            Self-check
           </NavLink>
           <NavLink to="/trainer" className={({ isActive }) => (isActive ? "active" : "")}>
             Trainer

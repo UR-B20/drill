@@ -11,6 +11,8 @@ import {
   Section,
   VerbatimTable,
 } from "../components/common";
+import AnatomyStrip from "../components/AnatomyStrip";
+import CadencePlayer from "../components/CadencePlayer";
 
 export default function DrillPage({
   content,
@@ -29,6 +31,17 @@ export default function DrillPage({
     );
   }
   const video = videos.find((v) => v.drill_id === drill.drill_id);
+  const idx = content.drills.indexOf(drill);
+  const prev = content.drills[idx - 1];
+  const next = content.drills[idx + 1];
+
+  const sections: [string, boolean][] = [
+    ["Command", !!drill.structure_of_command],
+    ["Timing", !!drill.word_of_command],
+    ["Stages", drill.stages_tables.length > 0],
+    ["Sequence", !!drill.moi_sequence],
+    ["Video", !!video],
+  ];
 
   return (
     <>
@@ -37,6 +50,16 @@ export default function DrillPage({
       </Link>
       <h1 className="command-display">{drill.names.malay}</h1>
       <div className="gloss-bar">{drill.names.english}</div>
+
+      <nav className="jump-nav" aria-label="Sections">
+        {sections
+          .filter(([, has]) => has)
+          .map(([name]) => (
+            <a key={name} href={`#${name.toLowerCase()}`}>
+              {name}
+            </a>
+          ))}
+      </nav>
 
       {drill.content_status !== "complete" && (
         <PendingPanel
@@ -49,47 +72,62 @@ export default function DrillPage({
       )}
 
       {drill.structure_of_command && (
-        <Section
-          title="Structure of command"
-          provenance={drill.structure_of_command.provenance}
-        >
-          <VerbatimTable table={drill.structure_of_command} />
-        </Section>
+        <div id="command">
+          <Section
+            title="Structure of command"
+            provenance={drill.structure_of_command.provenance}
+          >
+            <AnatomyStrip table={drill.structure_of_command} />
+            <details className="source-details">
+              <summary>Source table (verbatim)</summary>
+              <VerbatimTable table={drill.structure_of_command} />
+            </details>
+          </Section>
+        </div>
       )}
 
       {drill.word_of_command && (
-        <Section
-          title="Word of command"
-          provenance={drill.word_of_command.table.provenance}
-        >
-          {drill.word_of_command.rows.map((row, i) => (
-            <div className="woc-card" key={i}>
-              <div className="cmd">{row.word_of_command}</div>
-              <dl className="woc-grid">
-                {row.quick_time_when_given && (
-                  <>
-                    <dt>Quick time — when given</dt>
-                    <dd>{row.quick_time_when_given}</dd>
-                  </>
+        <div id="timing">
+          <Section
+            title="Word of command"
+            provenance={drill.word_of_command.table.provenance}
+          >
+            {drill.word_of_command.rows.map((row, i) => (
+              <div className="woc-card" key={i}>
+                <div className="cmd">{row.word_of_command}</div>
+                <dl className="woc-grid">
+                  {row.quick_time_when_given && (
+                    <>
+                      <dt>Quick time — when given</dt>
+                      <dd>{row.quick_time_when_given}</dd>
+                    </>
+                  )}
+                  {row.slow_time_when_given && row.slow_time_when_given !== "-" && (
+                    <>
+                      <dt>Slow time — when given</dt>
+                      <dd>{row.slow_time_when_given}</dd>
+                    </>
+                  )}
+                  {row.squad_call_out && (
+                    <>
+                      <dt>Squad calls out</dt>
+                      <dd className="callout">{row.squad_call_out}</dd>
+                    </>
+                  )}
+                </dl>
+                {(row.squad_call_out || row.quick_time_when_given) && (
+                  <details className="source-details">
+                    <summary>Practice cadence</summary>
+                    <CadencePlayer row={row} />
+                  </details>
                 )}
-                {row.slow_time_when_given && row.slow_time_when_given !== "-" && (
-                  <>
-                    <dt>Slow time — when given</dt>
-                    <dd>{row.slow_time_when_given}</dd>
-                  </>
-                )}
-                {row.squad_call_out && (
-                  <>
-                    <dt>Squad calls out</dt>
-                    <dd className="callout">{row.squad_call_out}</dd>
-                  </>
-                )}
-              </dl>
-            </div>
-          ))}
-        </Section>
+              </div>
+            ))}
+          </Section>
+        </div>
       )}
 
+      <div id="stages" />
       {drill.stages_tables.map((st) => (
         <Section
           key={st.caption_verbatim}
@@ -134,6 +172,7 @@ export default function DrillPage({
         </Section>
       )}
 
+      <div id="sequence" />
       {drill.moi_sequence && (
         <Section
           title="Sequence of instructions"
@@ -193,6 +232,7 @@ export default function DrillPage({
           </Section>
         ))}
 
+      <div id="video" />
       {video && (
         <Section title="Companion video">
           {mediaUrl(video.file) ? (
@@ -226,7 +266,20 @@ export default function DrillPage({
         </Section>
       )}
 
-      <div className="provenance" style={{ marginTop: 32 }}>
+      <div className="drill-pager">
+        {prev ? (
+          <Link to={`/drill/${prev.drill_id}`}>‹ {prev.names.english}</Link>
+        ) : (
+          <span />
+        )}
+        {next ? (
+          <Link to={`/drill/${next.drill_id}`}>{next.names.english} ›</Link>
+        ) : (
+          <span />
+        )}
+      </div>
+
+      <div className="provenance" style={{ marginTop: 24 }}>
         {provenanceLine(content.manual)} · ingestion: {content.ingestion.method}
       </div>
     </>

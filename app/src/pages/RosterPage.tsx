@@ -1,11 +1,19 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { STATUS_LABEL, type Content } from "../lib/content";
 import { Section } from "../components/common";
 
 export default function RosterPage({ content }: { content: Content }) {
+  const [q, setQ] = useState("");
   const counts = content.drills.reduce(
     (acc, d) => ({ ...acc, [d.content_status]: (acc[d.content_status] ?? 0) + 1 }),
     {} as Record<string, number>,
+  );
+  const shown = content.drills.filter(
+    (d) =>
+      !q ||
+      d.names.malay.toLowerCase().includes(q.toLowerCase()) ||
+      d.names.english.toLowerCase().includes(q.toLowerCase()),
   );
   return (
     <>
@@ -18,8 +26,19 @@ export default function RosterPage({ content }: { content: Content }) {
         {counts.partial ?? 0} partial, {counts.name_only ?? 0} pending content.
         Every entry below traces to the source manual; gaps are shown, never filled.
       </p>
+      <input
+        className="search-input"
+        type="search"
+        placeholder="Search commands or meanings…"
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        aria-label="Search drills"
+      />
       <Section title="Drill roster">
-        {content.drills.map((d) => (
+        {shown.length === 0 && (
+          <p style={{ color: "var(--muted)", fontSize: 14 }}>No drill matches "{q}".</p>
+        )}
+        {shown.map((d) => (
           <Link key={d.drill_id} to={`/drill/${d.drill_id}`} className={`drill-card status-${d.content_status}`}>
             <span className="malay">{d.names.malay}</span>
             <span className={`status-chip ${d.content_status}`}>{STATUS_LABEL[d.content_status]}</span>
