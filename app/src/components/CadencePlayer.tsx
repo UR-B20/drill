@@ -86,8 +86,8 @@ export default function CadencePlayer({ row }: { row: WocRow }) {
         </button>
       </div>
       <div className="cadence-note">
-        Tempo is your practice setting — the manual defines the trigger point
-        and call-out, not paces per minute.
+        The manual gives the trigger point and call-out. Set the tempo you
+        want to practise at.
       </div>
     </div>
   );

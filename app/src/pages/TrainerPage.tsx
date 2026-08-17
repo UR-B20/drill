@@ -49,8 +49,26 @@ function saveSession(drillId: string, s: SessionState) {
 export function TrainerHome({ content }: { content: Content }) {
   const [drillId, setDrillId] = useState<string>("");
   const [squadSize, setSquadSize] = useState<number>(12);
+  const [q, setQ] = useState("");
   const navigate = useNavigate();
   const drill = content.drills.find((d) => d.drill_id === drillId);
+
+  const term = q.trim().toLowerCase();
+  const shown = content.drills.filter(
+    (d) =>
+      !term ||
+      d.names.malay.toLowerCase().includes(term) ||
+      d.names.english.toLowerCase().includes(term) ||
+      // also match a fault or command inside the drill, so a trainer can
+      // search by what they want to work on
+      d.stages_tables.some((st) =>
+        st.stages.some(
+          (s) =>
+            s.common_faults.some((f) => f.toLowerCase().includes(term)) ||
+            s.command_verbatim.toLowerCase().includes(term),
+        ),
+      ),
+  );
 
   const layoutRows =
     drill?.layout_ratio?.rows.filter((r) =>
@@ -82,7 +100,20 @@ export function TrainerHome({ content }: { content: Content }) {
       <div className="gloss-bar">Trainer</div>
 
       <Section title="1 · Select drill">
-        {content.drills.map((d) => (
+        <input
+          className="search-input"
+          type="search"
+          placeholder="Search drills, commands or faults…"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          aria-label="Search drills"
+        />
+        {shown.length === 0 && (
+          <p style={{ color: "var(--muted)", fontSize: 14, marginTop: 10 }}>
+            Nothing matches "{q}".
+          </p>
+        )}
+        {shown.map((d) => (
           <button
             key={d.drill_id}
             className={`drill-card status-${d.content_status}`}
@@ -132,10 +163,10 @@ export function TrainerHome({ content }: { content: Content }) {
                   ))}
                 </div>
               ) : (
-                <PendingPanel reason="No layout row in the manual matches this squad size band." />
+                <PendingPanel reason="The manual has no layout for this squad size." />
               )
             ) : (
-              <PendingPanel reason="Layout & Ratio table for this drill is not present in the source draft." />
+              <PendingPanel reason="The manual has no layout and ratio table for this drill." />
             )}
           </Section>
 
@@ -158,8 +189,8 @@ export function TrainerHome({ content }: { content: Content }) {
                 <PendingPanel
                   reason={
                     drill.moi_sequence
-                      ? "This drill's Sequence of Instructions exists in the draft but has empty rows. You may open the session in reference-only mode; the app will not fill the gaps."
-                      : "This drill has no Sequence of Instructions in the source draft. You may open the session in reference-only mode; the app will not fill the gaps."
+                      ? "Some rows of this drill's sequence are empty in the manual. You can still open it for reference."
+                      : "The manual has no sequence of instructions for this drill. You can still open it for reference."
                   }
                 />
                 <button className="big-btn" onClick={() => startSession(true)}>
@@ -315,7 +346,7 @@ export function SessionRunner({ content }: { content: Content }) {
                 <div className="stage-name">{row.stage}</div>
                 {i === state.stageIndex &&
                   (row.status === "pending" ? (
-                    <PendingPanel reason="This stage's content is pending in the source draft. Deliver from your own qualification; the app will not supply wording." />
+                    <PendingPanel reason="This stage is empty in the manual. Deliver it from your own qualification." />
                   ) : (
                     <>
                       {row.what_to_do_or_say && (
@@ -361,7 +392,7 @@ export function SessionRunner({ content }: { content: Content }) {
           </div>
         </Section>
       ) : (
-        <PendingPanel reason="Reference-only session: no Sequence of Instructions in the source draft for this drill." />
+        <PendingPanel reason="Reference only — the manual has no sequence of instructions for this drill." />
       )}
 
       {drill.structure_of_command && (
@@ -398,7 +429,7 @@ export function SessionRunner({ content }: { content: Content }) {
               </div>
             </>
           ) : (
-            <PendingPanel reason="No Common Faults are listed for this drill in the source draft, so fault tagging is unavailable." />
+            <PendingPanel reason="The manual lists no common faults for this drill, so there is nothing to tag." />
           )}
         </Section>
       )}
@@ -508,8 +539,7 @@ export function SessionSummary({ content }: { content: Content }) {
 
       <Section title="Hand-off">
         <p style={{ fontSize: 13.5, color: "var(--muted)" }}>
-          Counts only — observations are limited to the manual's own fault
-          vocabulary as tagged live by the trainer.
+          Counts of the faults you tagged during the session.
         </p>
         <button className="big-btn" onClick={copy}>
           {copied ? "Copied" : "Copy debrief text"}

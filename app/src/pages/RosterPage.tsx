@@ -24,8 +24,7 @@ export default function RosterPage({ content }: { content: Content }) {
       <div className="gloss-bar">Chapter 2 · Section 1</div>
       <p style={{ color: "var(--muted)", fontSize: 14, marginTop: 10 }}>
         {content.drills.length} drills — {counts.complete ?? 0} complete,{" "}
-        {counts.partial ?? 0} partial, {counts.name_only ?? 0} pending content.
-        Every entry below traces to the source manual; gaps are shown, never filled.
+        {counts.partial ?? 0} partial, {counts.name_only ?? 0} pending.
       </p>
       <Link to="/cram" className="cram-link">
         ⚡ Cram deck — commands &amp; meanings, full screen

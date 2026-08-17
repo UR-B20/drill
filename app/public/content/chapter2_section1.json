@@ -11,6 +11,80 @@
   "generator": "scripts/ingest_chapter2.py",
   "no_llm_in_path": true
  },
+ "corrections_applied": [
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-3: Structure of Command for Attention",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  },
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-8: Structure of Command for At Ease",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  },
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-13: Structure of Command for Turning During Halt",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  },
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-20: Structure of Command for Dressing",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  },
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-28: Structure of Command for Bow",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  },
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-33: Structure of Command for Salutation",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  },
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-38: Structure of Command for Mark Time",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  },
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-43: Structure of Command for Three Cheers",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  },
+  {
+   "correction_id": "pause-1-sec",
+   "table_caption": "Table 2-1-47: Structure of Command for Recitation of Pledge or Creed",
+   "source_text": "2 secs",
+   "corrected_text": "1 sec",
+   "reason": "Regulation pause corrected to 1 sec by the content owner; source draft still reads '2 secs' and needs revision.",
+   "authority": "content owner"
+  }
+ ],
  "glossary": [
   {
    "malay": "Baris",
@@ -464,8 +538,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -525,7 +601,7 @@
      {
       "word_of_command": "“Sedi-A”",
       "quick_time_when_given": "Left heel strikes the ground",
-      "slow_time_when_given": "-",
+      "slow_time_when_given": "",
       "squad_call_out": "“One, Bang” – In Quick Time",
       "placeholders": []
      }
@@ -613,12 +689,9 @@
         ]
        },
        "common_faults": [
-        "Shoulders are creeping",
-        "forward",
-        "Arms are not",
-        "straightened by the side of the body",
-        "Body or feet not squared",
-        "to the front",
+        "Shoulders are creeping forward",
+        "Arms are not straightened by the side of the body",
+        "Body or feet not squared to the front",
         "Heels not together"
        ]
       }
@@ -746,49 +819,49 @@
      {
       "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "Form the squad with \nreference to Table 2-1-6.",
+      "action": "Form the squad with reference to Table 2-1-6.",
       "status": "present"
      },
      {
       "stage": "Formation of Squad",
       "what_to_do_or_say": "“Squad, Fall In!”\n“Squad, Stand at Ease!”",
-      "action": "Ensure the squad is \nproperly dressed, spaced and facing the trainer.",
+      "action": "Ensure the squad is properly dressed, spaced and facing the trainer.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The first drill is “Sedi-A”, which means Position of Attention.”",
-      "action": "Explain that attention is the\nbasic position for all stationary drills.\nEmphasize smartness,  \nstillness, alertness and eyes to the front.",
+      "action": "Explain that attention is the basic position for all stationary drills.\nEmphasize smartness, stillness, alertness and eyes to the front.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\n\nCommand: “Sedi-A.”",
-      "action": "Trainer demonstrates the \nfull movement into the position of attention without explanation.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: “Sedi-A.”",
+      "action": "Trainer demonstrates the full movement into the position of attention without explanation.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, with explanation.” \n\nCommand “Sedi-A”.",
-      "action": "Trainer demonstrates \nagain while explaining the key points of posture, stillness, alertness and smartness.\nRefer to Table 2-1-4",
+      "what_to_do_or_say": "“Watch my demonstration, with explanation.”\nCommand “Sedi-A”.",
+      "action": "Trainer demonstrates again while explaining the key points of posture, stillness, alertness and smartness.\nRefer to Table 2-1-4",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation”",
-      "action": "Trainer  \nbreaks the movement into stages, highlighting common errors such as moving after the command, poor posture or unnecessary movement.  \nRefer to Table 2-1-5.",
+      "action": "Trainer breaks the movement into stages, highlighting common errors such as moving after the command, poor posture or unnecessary movement.\nRefer to Table 2-1-5.",
       "status": "present"
      },
      {
       "stage": "Question",
-      "what_to_do_or_say": "“What is the meaning of Sedi-A?”\n\n“What are the key points when standing at attention?”",
-      "action": "Check understanding. \nRefer to Table 2-1-4 & 2-1-5 for expected answers.",
+      "what_to_do_or_say": "“What is the meaning of Sedi-A?”\n“What are the key points when standing at attention?”",
+      "action": "Check understanding.\nRefer to Table 2-1-4 & 2-1-5 for expected answers.",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute Sedi-A.”\n\nCommand: “Sedi-A”",
-      "action": "Squad practices the \nmovement. Trainer checks posture, timing, stillness and smartness. Correct common mistakes immediately and repeat.",
+      "what_to_do_or_say": "“Squad, on my command, execute Sedi-A.”\nCommand: “Sedi-A”",
+      "action": "Squad practices the movement. Trainer checks posture, timing, stillness and smartness. Correct common mistakes immediately and repeat.",
       "status": "present"
      }
     ],
@@ -985,8 +1058,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",
@@ -1455,8 +1530,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -1528,9 +1605,9 @@
    "word_of_command": {
     "rows": [
      {
-      "word_of_command": "“Senang Di-Ri” \n\n“Rehatkan Diri” \n[Stand Easy]",
+      "word_of_command": "“Senang Di-Ri”\n“Rehatkan Diri”\n[Stand Easy]",
       "quick_time_when_given": "Left heel strikes the ground",
-      "slow_time_when_given": "-",
+      "slow_time_when_given": "",
       "squad_call_out": "“One, Bang” – In Quick Time",
       "placeholders": []
      }
@@ -1604,12 +1681,9 @@
        },
        "common_faults": [
         "Head looking down",
-        "Left leg not lifted",
-        "up. Moving the right foot.",
-        "Bending at the",
-        "waist when moving",
-        "Arms sway away",
-        "from the body when transferring to the back"
+        "Left leg not lifted up. Moving the right foot.",
+        "Bending at the waist when moving",
+        "Arms sway away from the body when transferring to the back"
        ]
       },
       {
@@ -1623,16 +1697,12 @@
         ]
        },
        "common_faults": [
-        "Body not squared to",
-        "the front",
-        "Palm is not right",
-        "over left. Fingers not close together.",
-        "Left foot less than",
-        "30cm from right foot and not at the correct angle.",
+        "Body not squared to the front",
+        "Palm is not right over left. Fingers not close together.",
+        "Left foot less than 30cm from right foot and not at the correct angle.",
         "Stand easy",
         "Moving the feet",
-        "Adjusting bearing",
-        "without order"
+        "Adjusting bearing without order"
        ]
       }
      ],
@@ -1759,79 +1829,79 @@
      {
       "stage": "Formation of Squad",
       "what_to_do_or_say": "“Squad, Sedi-A”",
-      "action": "Form the squad with \nreference to Table 2-1-11.",
+      "action": "Form the squad with reference to Table 2-1-11.",
       "status": "present"
      },
      {
       "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "Start the squad from the \nposition of attention. \nEnsure the squad are alert \nand ready to receive the command.",
+      "action": "Start the squad from the position of attention.\nEnsure the squad are alert and ready to receive the command.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The next drill is At Ease.”",
-      "action": "Explain the difference \nbetween Stand at Ease and Stand Easy.",
+      "action": "Explain the difference between Stand at Ease and Stand Easy.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The command Senang Di-Ri means Stand at Ease.”",
-      "action": "Explain the difference \nbetween Stand at Ease and Stand Easy.",
+      "action": "Explain the difference between Stand at Ease and Stand Easy.",
       "status": "present"
      },
      {
       "stage": "Explanation",
-      "what_to_do_or_say": "“The command Rehatkan Diri means Stand Easy.” \n\nThis drill allows the soldier to relax slightly, but discipline must still be maintained.”",
-      "action": "Emphasize that soldiers \nmust still remain in position and listen for next command.",
+      "what_to_do_or_say": "“The command Rehatkan Diri means Stand Easy.”\nThis drill allows the soldier to relax slightly, but discipline must still be maintained.”",
+      "action": "Emphasize that soldiers must still remain in position and listen for next command.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”. \n\nCommand: Senang Di-Ri.\n\nCommand: Rehatkan Diri.\n\nCommand: Sedi-A.",
-      "action": "Trainer demonstrates Stand \nat Ease, Stand Easy, and recovery to Attention without explanation.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: Senang Di-Ri.\nCommand: Rehatkan Diri.\nCommand: Sedi-A.",
+      "action": "Trainer demonstrates Stand at Ease, Stand Easy, and recovery to Attention without explanation.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation.” On the command Senang Di-Ri, you will stand at ease but remain disciplined and alert.”",
-      "action": "Trainer demonstrates again \nwhile explaining the difference. between Stand at Ease and Stand Easy. \nRefer to Table 2-1-9.",
+      "action": "Trainer demonstrates again while explaining the difference. between Stand at Ease and Stand Easy.\nRefer to Table 2-1-9.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“On the command, Rehatkan Diri, you may relax slightly, but must remain in position and listen for the next command.”",
-      "action": "Trainer demonstrates again \nwhile explaining the difference. between Stand at Ease and Stand Easy. \nRefer to Table 2-1-9.",
+      "action": "Trainer demonstrates again while explaining the difference. between Stand at Ease and Stand Easy.\nRefer to Table 2-1-9.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation.”.",
-      "action": "Trainer breaks the \nmovement into stages, highlighting common errors and reinforces discipline, posture and reaction to command.\nRefer to Table 2-1-10",
+      "action": "Trainer breaks the movement into stages, highlighting common errors and reinforces discipline, posture and reaction to command.\nRefer to Table 2-1-10",
       "status": "present"
      },
      {
       "stage": "Question",
-      "what_to_do_or_say": "“What is the meaning of Senang Di-Ri?”\n\n“What is the meaning of Rehatkan Diri?”\n\n“What are the key points when standing at ease and stand easy?”",
-      "action": "Check understanding. Refer \nto Table 2-1-9 & 2-1-10 for expected answers.",
+      "what_to_do_or_say": "“What is the meaning of Senang Di-Ri?”\n“What is the meaning of Rehatkan Diri?”\n“What are the key points when standing at ease and stand easy?”",
+      "action": "Check understanding. Refer to Table 2-1-9 & 2-1-10 for expected answers.",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute Senang Di-Ri and Rehatkan Diri.”\n\nCommand: “Senang Di-Ri”\n\nCommand: “Rehatkan Diri”",
-      "action": "Squad practices the \nmovement. Trainer checks posture, timing, stillness and smartness. Correct common mistakes immediately and repeat.",
+      "what_to_do_or_say": "“Squad, on my command, execute Senang Di-Ri and Rehatkan Diri.”\nCommand: “Senang Di-Ri”\nCommand: “Rehatkan Diri”",
+      "action": "Squad practices the movement. Trainer checks posture, timing, stillness and smartness. Correct common mistakes immediately and repeat.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "To practice multiple times, on my command “Squad, Sedi-A” followed by “Senang Di-Ri”",
-      "action": "The trainer will give the \ncommand for attention first followed by the at ease or stand easy command.",
+      "action": "The trainer will give the command for attention first followed by the at ease or stand easy command.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "To return to the last position, on my command: “Semula”",
-      "action": "In the event, the execution \nof drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
+      "action": "In the event, the execution of drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
       "status": "present"
      }
     ],
@@ -2098,8 +2168,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",
@@ -2653,8 +2725,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -2756,24 +2830,24 @@
    "word_of_command": {
     "rows": [
      {
-      "word_of_command": "“Ke-Kanan Pu-Sing!”\n\n[Turning Right]\n\n\n\n“Seporah Ke-Kanan Pu-Sing”\n\n[Right Incline, Turn]",
+      "word_of_command": "“Ke-Kanan Pu-Sing!”\n[Turning Right]\n“Seporah Ke-Kanan Pu-Sing”\n[Right Incline, Turn]",
       "quick_time_when_given": "Left heel strikes the ground",
       "slow_time_when_given": "As the left foot reaches the ground",
-      "squad_call_out": "“One, Check, One” – In Quick Time\n\n“Left, Right Forward” – In Slow Time",
+      "squad_call_out": "“One, Check, One” – In Quick Time\n“Left, Right Forward” – In Slow Time",
       "placeholders": []
      },
      {
-      "word_of_command": "“Ke-Kiri Pu-Sing!”\n\n[Turning Left]\n\n\n\n“Seporah Ke-Kiri \nPu-Sing”\n\n[Left Incline, Turn]",
+      "word_of_command": "“Ke-Kiri Pu-Sing!”\n[Turning Left]\n“Seporah Ke-Kiri\nPu-Sing”\n[Left Incline, Turn]",
       "quick_time_when_given": "Right heel strikes the ground",
       "slow_time_when_given": "As the right foot reaches the ground",
-      "squad_call_out": "“One, Check, One” – In Quick Time\n\n“Right, Left, Forward” – In Slow Time",
+      "squad_call_out": "“One, Check, One” – In Quick Time\n“Right, Left, Forward” – In Slow Time",
       "placeholders": []
      },
      {
-      "word_of_command": "“Ke-Belakang Pu-Sing!”\n\n[About Turn]",
+      "word_of_command": "“Ke-Belakang Pu-Sing!”\n[About Turn]",
       "quick_time_when_given": "Left heel strikes the ground",
       "slow_time_when_given": "As the left foot reaches the ground",
-      "squad_call_out": "(Quick and Slow Time)\n \n“In, Left, Right, Left, Right, Swing/Forward!”",
+      "squad_call_out": "(Quick and Slow Time)\n“In, Left, Right, Left, Right, Swing/Forward!”",
       "placeholders": []
      }
     ],
@@ -2889,12 +2963,9 @@
         ]
        },
        "common_faults": [
-        "Not making a full",
-        "turn with body and shoulders in the first movement.",
-        "Moving the arms,",
-        "particularly during the second movement.",
-        "The weight is not",
-        "on the forward foot in the first movement."
+        "Not making a full turn with body and shoulders in the first movement.",
+        "Moving the arms, particularly during the second movement.",
+        "The weight is not on the forward foot in the first movement."
        ]
       },
       {
@@ -2907,8 +2978,7 @@
         ]
        },
        "common_faults": [
-        "Bending at the",
-        "waist during the second movement."
+        "Bending at the waist during the second movement."
        ]
       }
      ],
@@ -2934,12 +3004,9 @@
         ]
        },
        "common_faults": [
-        "Not making a full",
-        "turn with body and shoulders in the first movement.",
-        "Moving the arms,",
-        "particularly during the second movement.",
-        "The weight is not",
-        "on the forward foot in the first movement."
+        "Not making a full turn with body and shoulders in the first movement.",
+        "Moving the arms, particularly during the second movement.",
+        "The weight is not on the forward foot in the first movement."
        ]
       },
       {
@@ -2952,8 +3019,7 @@
         ]
        },
        "common_faults": [
-        "Bending at the",
-        "waist during the second movement."
+        "Bending at the waist during the second movement."
        ]
       }
      ],
@@ -2980,12 +3046,9 @@
         ]
        },
        "common_faults": [
-        "Not making a full",
-        "turn with body and shoulders in the first movement.",
-        "Moving the arms,",
-        "particularly during the second movement.",
-        "The weight is not",
-        "on the forward foot in the first movement."
+        "Not making a full turn with body and shoulders in the first movement.",
+        "Moving the arms, particularly during the second movement.",
+        "The weight is not on the forward foot in the first movement."
        ]
       },
       {
@@ -3125,97 +3188,97 @@
      {
       "stage": "Formation of Squad",
       "what_to_do_or_say": "“Squad, Sedi-A”",
-      "action": "- Form the squad with reference to Table 2-1-18. \nStart the squad from the position of attention",
+      "action": "Form the squad with reference to Table 2-1-18.\nStart the squad from the position of attention",
       "status": "present"
      },
      {
       "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "Ensure there is enough \nspace between soldiers to prevent contacts during turns.",
+      "action": "Ensure there is enough space between soldiers to prevent contacts during turns.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The next drill is Turning During Halt.”",
-      "action": "- Explain that turning during halt is used to change direction while remaining in position.",
+      "action": "Explain that turning during halt is used to change direction while remaining in position.",
       "status": "present"
      },
      {
       "stage": "Explanation",
-      "what_to_do_or_say": "“The three commands are:”\n\nKe-Kanan Pu-Sing – Right Turn\n\nKe-Kiri Pu-Sing – Left Turn \n\nKe-Belakang Pu-Sing – About Turn",
-      "action": "-",
+      "what_to_do_or_say": "“The three commands are:”\nKe-Kanan Pu-Sing – Right Turn\nKe-Kiri Pu-Sing – Left Turn\nKe-Belakang Pu-Sing – About Turn",
+      "action": "",
       "status": "present"
      },
      {
       "stage": "Explanation",
-      "what_to_do_or_say": "For left or right incline movement, the commands are\n\nCommand: Seporah Ke-\nKanan Pu-Sing\n\nCommand: Seporoh Ke-Kiri \nPu-Sing",
-      "action": "For a Right/ Left Incline \nTurn (45 degrees).",
+      "what_to_do_or_say": "For left or right incline movement, the commands are\nCommand: Seporah Ke-\nKanan Pu-Sing\nCommand: Seporoh Ke-Kiri\nPu-Sing",
+      "action": "For a Right/ Left Incline\nTurn (45 degrees).",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“You will turn only on the executive word …Sing.”",
-      "action": "Emphasise sharpness, \nbalance, correct direction and timing.",
+      "action": "Emphasise sharpness, balance, correct direction and timing.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”. \n\nCommand: Ke-Kanan Pu-Sing\n\nCommand: Seporah Ke-Kanan Pu-Sing\n\nCommand: Ke-Kiri Pu-Sing\n\nCommand: Seporaoh Ke-Kiri Pu-Sing\n\nCommand: Ke-Belakang Pu-Sing",
-      "action": "Trainer demonstrates \nRight Turn, Incline Right Turn, Left Turn, Incline Left Turn and About Turn without explanation.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: Ke-Kanan Pu-Sing\nCommand: Seporah Ke-Kanan Pu-Sing\nCommand: Ke-Kiri Pu-Sing\nCommand: Seporaoh Ke-Kiri Pu-Sing\nCommand: Ke-Belakang Pu-Sing",
+      "action": "Trainer demonstrates\nRight Turn, Incline Right Turn, Left Turn, Incline Left Turn and About Turn without explanation.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Ke-Kanan Pu-Sing, make a right turn and keep arms by the side of your body.",
-      "action": "- Trainer demonstrates again each turn and explains the direction, timing and final position.\n- Refer to Table 2-1-14",
+      "action": "Trainer demonstrates again each turn and explains the direction, timing and final position.\nRefer to Table 2-1-14",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Seporoh Ke-Kanan Pu-Sing, make a 45-degree right turn and keep arms by the side of your body.",
-      "action": "- Trainer demonstrates again each turn and explains the direction, timing and final position.\n- Refer to Table 2-1-14",
+      "action": "Trainer demonstrates again each turn and explains the direction, timing and final position.\nRefer to Table 2-1-14",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Ke-Kiri Pu-Sing, make a left turn and keep arms by the side of your body.",
-      "action": "- Trainer demonstrates again each turn and explains the direction, timing and final position.\n- Refer to Table 2-1-14",
+      "action": "Trainer demonstrates again each turn and explains the direction, timing and final position.\nRefer to Table 2-1-14",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Seporoh Ke-Kiri Pu-Sing, make a 45 degree left turn and keep arms by the side of your body.",
-      "action": "- Trainer demonstrates again each turn and explains the direction, timing and final position.\n- Refer to Table 2-1-14",
+      "action": "Trainer demonstrates again each turn and explains the direction, timing and final position.\nRefer to Table 2-1-14",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Ke-Belakang Pu-Sing, make a about turn and keep arms by the side of your body.",
-      "action": "- Trainer demonstrates again each turn and explains the direction, timing and final position.\n- Refer to Table 2-1-14",
+      "action": "Trainer demonstrates again each turn and explains the direction, timing and final position.\nRefer to Table 2-1-14",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation.”",
-      "action": "- Trainer breaks the movement into stages, highlighting common error for each stage.\n- Refer to Table 2-1-15 to 2-1-17",
+      "action": "Trainer breaks the movement into stages, highlighting common error for each stage.\nRefer to Table 2-1-15 to 2-1-17",
       "status": "present"
      },
      {
       "stage": "Question",
-      "what_to_do_or_say": "“What is the command for Right Turn?”\n\n“What is the command for Left Turn?”\n\n“What is the command for About Turn?”",
-      "action": "- Check understanding. Refer to Table 2-1-14 for expected answers.",
+      "what_to_do_or_say": "“What is the command for Right Turn?”\n“What is the command for Left Turn?”\n“What is the command for About Turn?”",
+      "action": "Check understanding. Refer to Table 2-1-14 for expected answers.",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute Ke-Kanan Pu-Sing, Ke-Kiri Pu-Sing and Ke-Belakang Pu-Sing\n\nCommand: Ke-Kanan Pu-Sing - - \n\nCommand: Ke-Kiri Pu-Sing\n\nCommand: Ke-Belakang Pu-Sing",
-      "action": "- Squad practices each turn. Trainer observes for wrong direction, poor balance, slow reaction, dragging of feet and lack of smartness. Correct and repeat until movements are correct.",
+      "what_to_do_or_say": "“Squad, on my command, execute Ke-Kanan Pu-Sing, Ke-Kiri Pu-Sing and Ke-Belakang Pu-Sing\nCommand: Ke-Kanan Pu-Sing - -\nCommand: Ke-Kiri Pu-Sing\nCommand: Ke-Belakang Pu-Sing",
+      "action": "Squad practices each turn. Trainer observes for wrong direction, poor balance, slow reaction, dragging of feet and lack of smartness. Correct and repeat until movements are correct.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "Command: “Semula”",
-      "action": "In the event, the execution \nof drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
+      "action": "In the event, the execution of drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
       "status": "present"
      }
     ],
@@ -3524,8 +3587,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",
@@ -4343,8 +4408,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -4468,29 +4535,29 @@
    "word_of_command": {
     "rows": [
      {
-      "word_of_command": "“Dalam Buka Barisan Ke- Kanan Lu-Rus!”\n\n[Open Order]",
+      "word_of_command": "“Dalam Buka Barisan Ke- Kanan Lu-Rus!”\n[Open Order]",
       "quick_time_when_given": "Left heel strikes the ground",
       "slow_time_when_given": "As the right foot reaches the ground",
       "squad_call_out": "“One-Check-One” – Quick time",
       "placeholders": []
      },
      {
-      "word_of_command": "“Dalam Tutup Barisan, Ke-Kanan Lu-Rus!”\n\n[Close Order]",
+      "word_of_command": "“Dalam Tutup Barisan, Ke-Kanan Lu-Rus!”\n[Close Order]",
       "quick_time_when_given": "Left heel strikes the ground",
       "slow_time_when_given": "As the right foot reaches the ground",
       "squad_call_out": "“One-Check-One” – Quick time",
       "placeholders": []
      },
      {
-      "word_of_command": "“Ke-Kanan Lu-Rus”\n\n[Eyes Right]",
-      "quick_time_when_given": "-",
+      "word_of_command": "“Ke-Kanan Lu-Rus”\n[Eyes Right]",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“Check-Up” – In Quick Time",
       "squad_call_out": "",
       "placeholders": []
      },
      {
-      "word_of_command": "“Pandang Ke-Hadapan, Pan-Dang!”\n\n[Eyes Front]",
-      "quick_time_when_given": "-",
+      "word_of_command": "“Pandang Ke-Hadapan, Pan-Dang!”\n[Eyes Front]",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“Check-Down” – In Quick Time",
       "squad_call_out": "",
       "placeholders": []
@@ -4619,8 +4686,8 @@
         ]
        },
        "common_faults": [
-        "- Allowing the left knee to bend.",
-        "- Arms not kept still at the sides."
+        "Allowing the left knee to bend.",
+        "Arms not kept still at the sides."
        ]
       },
       {
@@ -4651,10 +4718,8 @@
         ]
        },
        "common_faults": [
-        "The rank file is not",
-        "correctly aligned.",
-        "The body is not",
-        "erect square to the front."
+        "The rank file is not correctly aligned.",
+        "The body is not erect square to the front."
        ]
       }
      ],
@@ -4680,8 +4745,8 @@
         ]
        },
        "common_faults": [
-        "- Allowing the left knee to bend.",
-        "- Arms not kept still at the sides."
+        "Allowing the left knee to bend.",
+        "Arms not kept still at the sides."
        ]
       },
       {
@@ -4712,10 +4777,8 @@
         ]
        },
        "common_faults": [
-        "The rank file is not",
-        "correctly aligned.",
-        "The body is not",
-        "erect square to the front."
+        "The rank file is not correctly aligned.",
+        "The body is not erect square to the front."
        ]
       }
      ],
@@ -4742,10 +4805,8 @@
         ]
        },
        "common_faults": [
-        "Sluggish movement",
-        "of the arm or head.",
-        "The right arm is not",
-        "locked at the elbow with the knuckles in line with the shoulder of the man on the immediate right."
+        "Sluggish movement of the arm or head.",
+        "The right arm is not locked at the elbow with the knuckles in line with the shoulder of the man on the immediate right."
        ]
       },
       {
@@ -4758,12 +4819,9 @@
         ]
        },
        "common_faults": [
-        "Keeping still whilst",
-        "the man on the right is still taking his dressing.",
-        "The rank file is not",
-        "correctly aligned.",
-        "The body is not",
-        "erect square to the front."
+        "Keeping still whilst the man on the right is still taking his dressing.",
+        "The rank file is not correctly aligned.",
+        "The body is not erect square to the front."
        ]
       }
      ],
@@ -4891,92 +4949,98 @@
     "rows": [
      {
       "stage": "Formation of Squad",
+      "what_to_do_or_say": "“Squad, Sedi-A”",
+      "action": "Form the squad with reference to Table 2-1-26",
+      "status": "present"
+     },
+     {
+      "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "Ensure there is enough \nspace between soldiers to prevent contacts during turns.",
+      "action": "Ensure there is enough space between soldiers to prevent contacts during turns.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The next drill is Dressing.”",
-      "action": "- Explain that dressing ensures neatness, alignment and uniformity of the squad. \n- Emphasise spacing, straight ranks and quick correction of alignment.",
+      "action": "Explain that dressing ensures neatness, alignment and uniformity of the squad.\nEmphasise spacing, straight ranks and quick correction of alignment.",
       "status": "present"
      },
      {
       "stage": "Explanation",
-      "what_to_do_or_say": "“The four commands are:”\n\nDalam Buka Barisan Ke-Kanan Lu-Rus – Open Order, Right Dress",
-      "action": "- The center rank remains still during the first two movements, after the regulation pause, they carry out the dressing. Both center and rear ranks glanced slightly out of the corner of the eye to maintain correct alignment front to rear.\n- When dressing in two ranks, only rear rank moves – front rank stays still",
+      "what_to_do_or_say": "“The four commands are:”\nDalam Buka Barisan Ke-Kanan Lu-Rus – Open Order, Right Dress",
+      "action": "The center rank remains still during the first two movements, after the regulation pause, they carry out the dressing. Both center and rear ranks glanced slightly out of the corner of the eye to maintain correct alignment front to rear.\nWhen dressing in two ranks, only rear rank moves – front rank stays still",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "Dalam Tutup Barisan Ke-Kanan Lu-Rus – Close Order, Right Dress",
-      "action": "- Within each rank: One arm’s length (Fist clenched) between soldier.\n- Between Ranks: One arm's length (Fist clenched)\n- Men on the Right-hand file raises their Right arm in line with front of their right shoulder.\n- The knuckle of the clenched fist should just fail to reach the shoulder of the man in front.",
+      "action": "Within each rank: One arm’s length (Fist clenched) between soldier.\nBetween Ranks: One arm's length (Fist clenched)\nMen on the Right-hand file raises their Right arm in line with front of their right shoulder.\nThe knuckle of the clenched fist should just fail to reach the shoulder of the man in front.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "Ke-Kanan Lu-Rus – Dressing By Numbers, Right Dress",
-      "action": "- Men on the Right-hand file raises their Right arm in line with front of their right shoulder.\n- The knuckle of the clenched fist should just fail to reach the shoulder of the man in front.",
+      "action": "Men on the Right-hand file raises their Right arm in line with front of their right shoulder.\nThe knuckle of the clenched fist should just fail to reach the shoulder of the man in front.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "Pandang Ke-Hadapan Pan-Dang – Eyes Front",
-      "action": "- Pause with precision – always give a brief pause between the two movement to keep timing clean and synchronized\n- With rifle – raise your left arm while keeping head turned right (except for the first man in line)\n- Multiple squads on parade, the right-hand files of all the squads takes dressing from the squad on their right. Only the file to extreme right will remain still. Dressing may be ordered from either flank or the center, depending on the formation.",
+      "action": "Pause with precision – always give a brief pause between the two movement to keep timing clean and synchronized\nWith rifle – raise your left arm while keeping head turned right (except for the first man in line)\nMultiple squads on parade, the right-hand files of all the squads takes dressing from the squad on their right. Only the file to extreme right will remain still. Dressing may be ordered from either flank or the center, depending on the formation.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”. \n\nCommand: Dalam Buka Barisan Ke-Kanan Lu-Rus\n\nCommand: Dalam Tutup Barisan Ke-Kanan Lu-Rus\n\nCommand: Ke-Kanan Lu-Rus\n\nCommand: Pandang Ke-Hadapan Pan-Dang",
-      "action": "- Trainer demonstrates Open order, closed order, eyes right and eyes front.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: Dalam Buka Barisan Ke-Kanan Lu-Rus\nCommand: Dalam Tutup Barisan Ke-Kanan Lu-Rus\nCommand: Ke-Kanan Lu-Rus\nCommand: Pandang Ke-Hadapan Pan-Dang",
+      "action": "Trainer demonstrates Open order, closed order, eyes right and eyes front.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Dalam Buka Barisan Ke-Kanan Lu-Rus, open order and take dressing to the right.",
-      "action": "- Trainer demonstrates again the full sequence, head movement and squad dressing.\n- Refer to Table 2-1-21.",
+      "action": "Trainer demonstrates again the full sequence, head movement and squad dressing.\nRefer to Table 2-1-21.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Dalam Tutup Barisan Ke-Kanan Lu-Rus, close order and take dressing to the right.",
-      "action": "- Trainer demonstrates again the full sequence, head movement and squad dressing.\n- Refer to Table 2-1-21.",
+      "action": "Trainer demonstrates again the full sequence, head movement and squad dressing.\nRefer to Table 2-1-21.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Ke-Kanan Lu-Rus, body upright and take dressing to the right.",
-      "action": "- Trainer demonstrates again the full sequence, head movement and squad dressing.\n- Refer to Table 2-1-21.",
+      "action": "Trainer demonstrates again the full sequence, head movement and squad dressing.\nRefer to Table 2-1-21.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Pandang Ke-Hadapan Pan-Dang, turn your head sharply to face front.",
-      "action": "- Trainer demonstrates again the full sequence, head movement and squad dressing.\n- Refer to Table 2-1-21.",
+      "action": "Trainer demonstrates again the full sequence, head movement and squad dressing.\nRefer to Table 2-1-21.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation.”.",
-      "action": "- Trainer breaks down each command and highlights straight ranks, correct spacing neat alignment and quick recovery to eyes front and highlighting common error for each stage.\n- Refer to Table 2-1-22 to 2-1-25.",
+      "action": "Trainer breaks down each command and highlights straight ranks, correct spacing neat alignment and quick recovery to eyes front and highlighting common error for each stage.\nRefer to Table 2-1-22 to 2-1-25.",
       "status": "present"
      },
      {
       "stage": "Question",
-      "what_to_do_or_say": "“What is the meaning of Dalam Buka Barisan?”\n\n“What is the meaning of Dalam Tutup Barisan?”\n\n“Which command is given for Eyes Right?”\n\n“Which command is given to return eyes to the front?”",
-      "action": "Check understanding of \ncommand and meaning. Confirm that the squad knows the knows the difference between opening ranks, closing ranks, eyes right and eyes front.",
+      "what_to_do_or_say": "“What is the meaning of Dalam Buka Barisan?”\n“What is the meaning of Dalam Tutup Barisan?”\n“Which command is given for Eyes Right?”\n“Which command is given to return eyes to the front?”",
+      "action": "Check understanding of command and meaning. Confirm that the squad knows the knows the difference between opening ranks, closing ranks, eyes right and eyes front.",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute \n\nCommand: Dalam Buka Barisan Ke-Kanan Lu-Rus \n\nCommand: Dalam Tutup Barisan Ke-Kanan Lu-Rus\n\nCommand: Ke-Kanan Lu-Rus\n\nCommand: Pandang:Ke-Hadapan Pan-Dang",
-      "action": "- Squad practices. Trainers check alignment, spacing, head movement, straight ranks and smart recovery to eyes front.",
+      "what_to_do_or_say": "“Squad, on my command, execute\nCommand: Dalam Buka Barisan Ke-Kanan Lu-Rus\nCommand: Dalam Tutup Barisan Ke-Kanan Lu-Rus\nCommand: Ke-Kanan Lu-Rus\nCommand: Pandang:Ke-Hadapan Pan-Dang",
+      "action": "Squad practices. Trainers check alignment, spacing, head movement, straight ranks and smart recovery to eyes front.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "Command: “Semula”",
-      "action": "In the event, the execution \nof drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
+      "action": "In the event, the execution of drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
       "status": "present"
      }
     ],
@@ -5271,8 +5335,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",
@@ -6196,8 +6262,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -6283,15 +6351,15 @@
    "word_of_command": {
     "rows": [
      {
-      "word_of_command": "“Tun-Dok”\n\t\t\n[Bow]",
-      "quick_time_when_given": "-",
+      "word_of_command": "“Tun-Dok”\n[Bow]",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“Down” – Quick Time\n“One Thousand, Two Thousand, Three Thousand, Four Thousand” – Slow Time",
       "squad_call_out": "",
       "placeholders": []
      },
      {
-      "word_of_command": "“Sedi-A” \n\t\n[Attention]",
-      "quick_time_when_given": "-",
+      "word_of_command": "“Sedi-A”\n[Attention]",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“Up” – Quick Time",
       "squad_call_out": "",
       "placeholders": []
@@ -6379,10 +6447,10 @@
         ]
        },
        "common_faults": [
-        "- Fidgeting before the 1 minute is up",
-        "- Head not looking down",
-        "- Arms not by the side of the body",
-        "- Heels not together"
+        "Fidgeting before the 1 minute is up",
+        "Head not looking down",
+        "Arms not by the side of the body",
+        "Heels not together"
        ]
       },
       {
@@ -6395,9 +6463,9 @@
         ]
        },
        "common_faults": [
-        "- Head not looking forward",
-        "- Arms not by the side of the body",
-        "- Heels not together"
+        "Head not looking forward",
+        "Arms not by the side of the body",
+        "Heels not together"
        ]
       }
      ],
@@ -6523,20 +6591,26 @@
     "rows": [
      {
       "stage": "Formation of Squad",
+      "what_to_do_or_say": "“Squad, Sedi-A”",
+      "action": "Form the squad with reference to Table 2-1-31.",
+      "status": "present"
+     },
+     {
+      "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "- Ensure the squad is facing front and standing still.",
+      "action": "Ensure the squad is facing front and standing still.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The next drill is Bow.”",
-      "action": "- Explain that this drill is used when the squad is required to bow or lower the head as a formal movement/ purpose of remembrance. \n- Emphasise spacing, straight ranks and quick correction of alignment.",
+      "action": "Explain that this drill is used when the squad is required to bow or lower the head as a formal movement/ purpose of remembrance.\nEmphasise spacing, straight ranks and quick correction of alignment.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The command on Tun-Dok means Lower Head.”",
-      "action": "- Emphasise controlled movement and recovery.",
+      "action": "Emphasise controlled movement and recovery.",
       "status": "present"
      },
      {
@@ -6547,44 +6621,44 @@
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”. \n\nCommand: Tun-Dok\n\nCommand: Sedi-A",
-      "action": "- Trainer demonstrates heads down and recovery to attention without explanation.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: Tun-Dok\nCommand: Sedi-A",
+      "action": "Trainer demonstrates heads down and recovery to attention without explanation.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Tun-Dok, you are to lower your head to look down.",
-      "action": "- Trainer demonstrates again while explaining control, timing and recovery. \n- Refer to Table 2-1-4.",
+      "action": "Trainer demonstrates again while explaining control, timing and recovery.\nRefer to Table 2-1-4.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Sedi-A, you are to bring up your head to face front.",
-      "action": "- Trainer demonstrates again while explaining control, timing and recovery. \n- Refer to Table 2-1-4.",
+      "action": "Trainer demonstrates again while explaining control, timing and recovery.\nRefer to Table 2-1-4.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation.”.",
-      "action": "- Trainer breaks down the movement and checks for uniform timing, posture and recovery. \n- Refer to Table 2-1-5",
+      "action": "Trainer breaks down the movement and checks for uniform timing, posture and recovery.\nRefer to Table 2-1-5",
       "status": "present"
      },
      {
       "stage": "Question",
-      "what_to_do_or_say": "“What is the meaning of Tun-Dok?”\n\n“Which command is used to recover?”\n\n“Should the movement be slow or sharp?”",
-      "action": "- Check understanding. Refer to Table 2-1-29 & 2-1-30 for expected answers.",
+      "what_to_do_or_say": "“What is the meaning of Tun-Dok?”\n“Which command is used to recover?”\n“Should the movement be slow or sharp?”",
+      "action": "Check understanding. Refer to Table 2-1-29 & 2-1-30 for expected answers.",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute \n\nCommand: Tun-Dok\n\nCommand: Sedi-A",
-      "action": "- Squad practices the movement. Trainer checks posture, timing, stillness and smartness. Correct common mistakes immediately and repeat.",
+      "what_to_do_or_say": "“Squad, on my command, execute\nCommand: Tun-Dok\nCommand: Sedi-A",
+      "action": "Squad practices the movement. Trainer checks posture, timing, stillness and smartness. Correct common mistakes immediately and repeat.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "Command: “Semula”",
-      "action": "In the event, the execution \nof drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
+      "action": "In the event, the execution of drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
       "status": "present"
      }
     ],
@@ -6823,8 +6897,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",
@@ -7377,8 +7453,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -7502,29 +7580,29 @@
    "word_of_command": {
     "rows": [
      {
-      "word_of_command": "“Hormat Ke-Hadapan Hor-Mat”\n\n[Salute to the Front]",
+      "word_of_command": "“Hormat Ke-Hadapan Hor-Mat”\n[Salute to the Front]",
       "quick_time_when_given": "",
       "slow_time_when_given": "“One-Check-One” – Quick time",
       "squad_call_out": "",
       "placeholders": []
      },
      {
-      "word_of_command": "“Hormat Ke-Kanan Hor-Mat”\n\n[Salute to the Right]",
-      "quick_time_when_given": "-",
+      "word_of_command": "“Hormat Ke-Kanan Hor-Mat”\n[Salute to the Right]",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“One-Check-One” – Quick time",
       "squad_call_out": "",
       "placeholders": []
      },
      {
-      "word_of_command": "“Hormat Ke-Kiri Hor-Mat”\n\n[Salute to the Left]",
-      "quick_time_when_given": "-",
+      "word_of_command": "“Hormat Ke-Kiri Hor-Mat”\n[Salute to the Left]",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“One-Check-One” – Quick time",
       "squad_call_out": "",
       "placeholders": []
      },
      {
-      "word_of_command": "“Sedi-A”\n\n[Recover]",
-      "quick_time_when_given": "-",
+      "word_of_command": "“Sedi-A”\n[Recover]",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“One-Check-One” – Quick time",
       "squad_call_out": "",
       "placeholders": []
@@ -7645,8 +7723,8 @@
         ]
        },
        "common_faults": [
-        "- Upper arm not horizontal and parallel to the ground.",
-        "- Outer edge of the hand is not turned slightly downward."
+        "Upper arm not horizontal and parallel to the ground.",
+        "Outer edge of the hand is not turned slightly downward."
        ]
       },
       {
@@ -7659,8 +7737,8 @@
         ]
        },
        "common_faults": [
-        "- Upper arm not horizontal and parallel to the ground.",
-        "- Outer edge of the hand is not turned slightly downward."
+        "Upper arm not horizontal and parallel to the ground.",
+        "Outer edge of the hand is not turned slightly downward."
        ]
       },
       {
@@ -7673,8 +7751,8 @@
         ]
        },
        "common_faults": [
-        "- Upper arm not horizontal and parallel to the ground.",
-        "- Outer edge of the hand is not turned slightly downward."
+        "Upper arm not horizontal and parallel to the ground.",
+        "Outer edge of the hand is not turned slightly downward."
        ]
       },
       {
@@ -7687,9 +7765,8 @@
         ]
        },
        "common_faults": [
-        "- Dropping the hand before the elbow.",
-        "- Not resuming the position of “Attention” with the right",
-        "hand."
+        "Dropping the hand before the elbow.",
+        "Not resuming the position of “Attention” with the right hand."
        ]
       }
      ],
@@ -7815,20 +7892,26 @@
     "rows": [
      {
       "stage": "Formation of Squad",
+      "what_to_do_or_say": "“Squad, Sedi-A”",
+      "action": "Form the squad with reference to Table 2-1-36",
+      "status": "present"
+     },
+     {
+      "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "Ensure there is enough \nspace before salutation practice.",
+      "action": "Ensure there is enough space before salutation practice.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The next drill is Salutation.”",
-      "action": "- Explain when salutation is used and why it must be done properly. \n- To pay the proper compliment to a commissioned officer or uncased Colours\n- Saluting as a soldier can be done with different attire (uniform / plain clothes) and with/without headdress\n- With beret, the tip of the forefinger should touch the forehead an inch above the right eye.\n\n- With Helmet, the forefinger should touch the brim of the helmet.\n- Without head dress, meets or pass by an officer, he/she will stand to Attention with salute facing the officer.\n- If soldier is in plain clothes with head dress (other than military head dress), Soldier is to remove it and stand to Attention with salute.",
+      "action": "Explain when salutation is used and why it must be done properly.\nTo pay the proper compliment to a commissioned officer or uncased Colours\nSaluting as a soldier can be done with different attire (uniform / plain clothes) and with/without headdress\nWith beret, the tip of the forefinger should touch the forehead an inch above the right eye.\nWith Helmet, the forefinger should touch the brim of the helmet.\nWithout head dress, meets or pass by an officer, he/she will stand to Attention with salute facing the officer.\nIf soldier is in plain clothes with head dress (other than military head dress), Soldier is to remove it and stand to Attention with salute.",
       "status": "present"
      },
      {
       "stage": "Explanation",
-      "what_to_do_or_say": "“The four commands are:”\n\nHormat Ke-Hadapan Hor-Mat – Salute to the Front\n\nHormat Ke-Kanan Hor-Mat – Salute to the Right\n\nHormat Ke-Kiri Hor-Mat – Salute to the Left\n\nSedi-A - Recover",
-      "action": "- Emphasise respect, discipline, timing, posture and recovery.",
+      "what_to_do_or_say": "“The four commands are:”\nHormat Ke-Hadapan Hor-Mat – Salute to the Front\nHormat Ke-Kanan Hor-Mat – Salute to the Right\nHormat Ke-Kiri Hor-Mat – Salute to the Left\nSedi-A - Recover",
+      "action": "Emphasise respect, discipline, timing, posture and recovery.",
       "status": "present"
      },
      {
@@ -7839,50 +7922,50 @@
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”. \n\nCommand: Hormat Ke-Hadapan Hor-Mat\n\nCommand: Sedi-A\n\nCommand: Hormat Ke-Kanan Hor-Mat\n\nCommand: Sedi-A\n\nCommand: Hormat Ke-Kiri Hor-Mat\n\nCommand: Sedi-A",
-      "action": "- Trainer demonstrates salute to the front, right and left, with recovery after each salutation.\n- Show head direction, hand position, body posture and final recovery.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: Hormat Ke-Hadapan Hor-Mat\nCommand: Sedi-A\nCommand: Hormat Ke-Kanan Hor-Mat\nCommand: Sedi-A\nCommand: Hormat Ke-Kiri Hor-Mat\nCommand: Sedi-A",
+      "action": "Trainer demonstrates salute to the front, right and left, with recovery after each salutation.\nShow head direction, hand position, body posture and final recovery.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Hormat Ke-Hadapan Hor-Mat, salute to the front.",
-      "action": "- Trainer demonstrates each salute while explaining direction, hand position, head movement, posture and recovery.\n- Refer to Table 2-1-34.",
+      "action": "Trainer demonstrates each salute while explaining direction, hand position, head movement, posture and recovery.\nRefer to Table 2-1-34.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Hormat Ke-Kanan Hor-Mat, salute to the right.",
-      "action": "- Trainer demonstrates each salute while explaining direction, hand position, head movement, posture and recovery.\n- Refer to Table 2-1-34.",
+      "action": "Trainer demonstrates each salute while explaining direction, hand position, head movement, posture and recovery.\nRefer to Table 2-1-34.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Hormat Ke-Kiri Hor-Mat, salute to the left.",
-      "action": "- Trainer demonstrates each salute while explaining direction, hand position, head movement, posture and recovery.\n- Refer to Table 2-1-34.",
+      "action": "Trainer demonstrates each salute while explaining direction, hand position, head movement, posture and recovery.\nRefer to Table 2-1-34.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation.”.",
-      "action": "- Trainer breaks down front, right and left salutes separately. \n- Highlighting common error for each stage.\n- Refer to Table 2-1-34 to 2-1-35.",
+      "action": "Trainer breaks down front, right and left salutes separately.\nHighlighting common error for each stage.\nRefer to Table 2-1-34 to 2-1-35.",
       "status": "present"
      },
      {
       "stage": "Question",
-      "what_to_do_or_say": "“What is the command for Salute to the Front?”\n\n“What is the command for Salute to the Right?”\n\n“What is the command for Salute to the Left?”\n\n“Which command is used to recover?”",
-      "action": "Check understanding of \ncommand and meaning.",
+      "what_to_do_or_say": "“What is the command for Salute to the Front?”\n“What is the command for Salute to the Right?”\n“What is the command for Salute to the Left?”\n“Which command is used to recover?”",
+      "action": "Check understanding of command and meaning.",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute \n\nCommand: Hormat Ke-Hadapan Hor-Mat\n\nCommand: Sedi-A\n\nCommand: Hormat Ke-Kanan Hor-Mat\n\nCommand: Sedi-A\n\nCommand: Hormat Ke-Kiri Hor-Mat\n\nCommand: Sedi-A",
-      "action": "- Squad practices. Trainers checks saluting hand position, head direction, timing posture, recovery and smartness.\n- Repeat until the squad executes uniformity.",
+      "what_to_do_or_say": "“Squad, on my command, execute\nCommand: Hormat Ke-Hadapan Hor-Mat\nCommand: Sedi-A\nCommand: Hormat Ke-Kanan Hor-Mat\nCommand: Sedi-A\nCommand: Hormat Ke-Kiri Hor-Mat\nCommand: Sedi-A",
+      "action": "Squad practices. Trainers checks saluting hand position, head direction, timing posture, recovery and smartness.\nRepeat until the squad executes uniformity.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "Command: “Semula”",
-      "action": "In the event, the execution \nof drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
+      "action": "In the event, the execution of drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
       "status": "present"
      }
     ],
@@ -8135,8 +8218,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",
@@ -8816,8 +8901,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -8925,21 +9012,21 @@
    "word_of_command": {
     "rows": [
      {
-      "word_of_command": "Hentak Kaki Cepat, Hen-Tak\n\n[Quick Mark Time]",
+      "word_of_command": "Hentak Kaki Cepat, Hen-Tak\n[Quick Mark Time]",
       "quick_time_when_given": "“…Tak” when the right heel strikes hit the ground",
       "slow_time_when_given": "“Hen” and “Tak” will be given on the successive beats of the left foot as it reaches the ground.",
       "squad_call_out": "“Check, In” in Quick Time",
       "placeholders": []
      },
      {
-      "word_of_command": "Hentak Kaki Perlahan, Hen-Tak\n\n[Slow Mark Time]",
+      "word_of_command": "Hentak Kaki Perlahan, Hen-Tak\n[Slow Mark Time]",
       "quick_time_when_given": "“…Tak” when the right heel strikes hit the ground",
       "slow_time_when_given": "“Hen” and “Tak” will be given on the successive beats of the left foot as it reaches the ground.",
       "squad_call_out": "“In” in Slow Time",
       "placeholders": []
      },
      {
-      "word_of_command": "“Berhen-Ti”\n\n[Halt]",
+      "word_of_command": "“Berhen-Ti”\n[Halt]",
       "quick_time_when_given": "Left heel strikes the ground",
       "slow_time_when_given": "As the right foot reaches the ground",
       "squad_call_out": "“Check, In, Bang” – In Quick Time\n“One, Two” – In Slow Time",
@@ -9056,10 +9143,8 @@
         ]
        },
        "common_faults": [
-        "Arms swinging and not",
-        "kept by the side of the body.",
-        "Not lifting the right thigh",
-        "horizontally to the ground."
+        "Arms swinging and not kept by the side of the body.",
+        "Not lifting the right thigh horizontally to the ground."
        ]
       },
       {
@@ -9072,10 +9157,8 @@
         ]
        },
        "common_faults": [
-        "Arms swinging and not",
-        "kept by the side of the body.",
-        "Not lifting the left thigh",
-        "horizontally to the ground."
+        "Arms swinging and not kept by the side of the body.",
+        "Not lifting the left thigh horizontally to the ground."
        ]
       },
       {
@@ -9088,10 +9171,8 @@
         ]
        },
        "common_faults": [
-        "Body not square to the",
-        "front.",
-        "Not driving the right foot",
-        "to the ground."
+        "Body not square to the front.",
+        "Not driving the right foot to the ground."
        ]
       }
      ],
@@ -9217,19 +9298,25 @@
     "rows": [
      {
       "stage": "Formation of Squad",
+      "what_to_do_or_say": "“Squad, Sedi-A”",
+      "action": "Form the squad with reference to Table 2-1-41",
+      "status": "present"
+     },
+     {
+      "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "Ensure soldiers have \nenough space to mark time without hitting the person in front or beside them.",
+      "action": "Ensure soldiers have enough space to mark time without hitting the person in front or beside them.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The next drill is Mark Time.”",
-      "action": "Explain that Mark Time is \nused to maintain marching rhythm without moving forward. \nEmpahsise timing, knee \nlift, posture and halting together.",
+      "action": "Explain that Mark Time is used to maintain marching rhythm without moving forward.\nEmpahsise timing, knee lift, posture and halting together.",
       "status": "present"
      },
      {
       "stage": "Explanation",
-      "what_to_do_or_say": "“The commands are:”\n\nHentak Kaki Cepat, Hen-Tak\n– Quick Mark Time\n\nHentak Kaki Perlahan, Hen-Tak – Slow Mark Time\n\nBerhen-Ti - Halt",
+      "what_to_do_or_say": "“The commands are:”\nHentak Kaki Cepat, Hen-Tak\nQuick Mark Time\nHentak Kaki Perlahan, Hen-Tak – Slow Mark Time\nBerhen-Ti - Halt",
       "action": "",
       "status": "present"
      },
@@ -9241,50 +9328,50 @@
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”. \n\nCommand: Hentak Kaki Cepat, Hen-Tak\n\nCommand: Hentak Kaki Cepat, Hen-Tak\n\nCommand: Berhen-Ti",
-      "action": "Trainer demonstrates \nmarking time on the spot, then halting smartly on Berhen-Ti.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: Hentak Kaki Cepat, Hen-Tak\nCommand: Hentak Kaki Cepat, Hen-Tak\nCommand: Berhen-Ti",
+      "action": "Trainer demonstrates marking time on the spot, then halting smartly on Berhen-Ti.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Hentak Kaki Cepat, Hen-Tak, execute a quick mark time.",
-      "action": "Trainer demonstrates \nagain while explaining rhythm, timing, posture and halt.\n- Refer to Table 2-1-39.",
+      "action": "Trainer demonstrates again while explaining rhythm, timing, posture and halt.\nRefer to Table 2-1-39.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Hentak Kaki Perlahan, Hen-Tak, execute a slow mark time.",
-      "action": "Trainer demonstrates \nagain while explaining rhythm, timing, posture and halt.\n- Refer to Table 2-1-39.",
+      "action": "Trainer demonstrates again while explaining rhythm, timing, posture and halt.\nRefer to Table 2-1-39.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Berhen-Ti, from mark time to come to a halt.",
-      "action": "Trainer demonstrates \nagain while explaining rhythm, timing, posture and halt.\n- Refer to Table 2-1-39.",
+      "action": "Trainer demonstrates again while explaining rhythm, timing, posture and halt.\nRefer to Table 2-1-39.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation.”.",
-      "action": "- Trainer breaks down movement and corrects common errors such as uneven timing, poor rhythm, excessive body movement and weak halt position.\n- Refer to Table 2-1-39 to 2-1-40.",
+      "action": "Trainer breaks down movement and corrects common errors such as uneven timing, poor rhythm, excessive body movement and weak halt position.\nRefer to Table 2-1-39 to 2-1-40.",
       "status": "present"
      },
      {
       "stage": "Question",
-      "what_to_do_or_say": "“What does Hentak Kaki Cepat Hen-Tak mean?”\n\n“What does Berhen-Ti mean.?\n\n“What must the squad maintain during Mark Time?”",
-      "action": "Check understanding of \ncommand and meaning.",
+      "what_to_do_or_say": "“What does Hentak Kaki Cepat Hen-Tak mean?”\n“What does Berhen-Ti mean.?\n“What must the squad maintain during Mark Time?”",
+      "action": "Check understanding of command and meaning.",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute \n\n\nCommand: Hentak Kaki Cepat, Hen-Tak\n\nCommand: Hentak Kaki Cepat, Hen-Tak\n\nCommand: Berhen-Ti",
-      "action": "Squad practices marking \ntime and halting. Trainer check rhythm, foot timing, posture, synchronisation and halt position. \nCorrect uneven timing \nand repeat.",
+      "what_to_do_or_say": "“Squad, on my command, execute\nCommand: Hentak Kaki Cepat, Hen-Tak\nCommand: Hentak Kaki Cepat, Hen-Tak\nCommand: Berhen-Ti",
+      "action": "Squad practices marking time and halting. Trainer check rhythm, foot timing, posture, synchronisation and halt position.\nCorrect uneven timing and repeat.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "Command: “Semula”",
-      "action": "In the event, the execution \nof drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
+      "action": "In the event, the execution of drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
       "status": "present"
      }
     ],
@@ -9537,8 +9624,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",
@@ -10176,8 +10265,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -10254,7 +10345,7 @@
     "rows": [
      {
       "word_of_command": "Baris Akan Beri Tiga Sorakan Kepada (Rank & Name or Appointment), Hip, Hip, … (x3)",
-      "quick_time_when_given": "-",
+      "quick_time_when_given": "",
       "slow_time_when_given": "Upon Hip, Hip..call out “Hooray!” x 3 times",
       "squad_call_out": "",
       "placeholders": []
@@ -10324,8 +10415,7 @@
         ]
        },
        "common_faults": [
-        "Right fist did not punch",
-        "up fully and bring down fully.",
+        "Right fist did not punch up fully and bring down fully.",
         "Squad did not echo",
         "“Hooray” after “Hip, Hip.”"
        ]
@@ -10453,20 +10543,26 @@
     "rows": [
      {
       "stage": "Formation of Squad",
+      "what_to_do_or_say": "“Squad, Sedi-A”",
+      "action": "Form the squad with reference to Table 2-1-45",
+      "status": "present"
+     },
+     {
+      "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "Ensure the squad are \nstanding upright, alert, and facing the trainer.",
+      "action": "Ensure the squad are standing upright, alert, and facing the trainer.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The next drill is Three Cheers.”",
-      "action": "Explain the purpose of \nThree Cheers is to honour a personage correctly and in a uniform manner. \nEmpahsise loudness, \nenthusiasm, timing, togetherness and discipline.\nThe squad must not shout \nbefore the command is given.",
+      "action": "Explain the purpose of\nThree Cheers is to honour a personage correctly and in a uniform manner.\nEmpahsise loudness, enthusiasm, timing, togetherness and discipline.\nThe squad must not shout before the command is given.",
       "status": "present"
      },
      {
       "stage": "Explanation",
-      "what_to_do_or_say": "“The command is:’\n\nBaris Akan Beri Tiga Sorakan Kepada (Rank & Name or Appointment), Hip, Hip, …Hooray (x3)",
-      "action": "On the trainer’s call of \nHip Hip, the squad will respond loudly and clearly with Hooray. This will be repeated three times.”",
+      "what_to_do_or_say": "“The command is:’\nBaris Akan Beri Tiga Sorakan Kepada (Rank & Name or Appointment), Hip, Hip, …Hooray (x3)",
+      "action": "On the trainer’s call of\nHip Hip, the squad will respond loudly and clearly with Hooray. This will be repeated three times.”",
       "status": "present"
      },
      {
@@ -10477,38 +10573,38 @@
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”. \n\nCommand: Baris Akan Beri Tiga Sorakan Kepada (Rank & Name or Appointment), Hip, Hip, …Hooray (x3)",
-      "action": "Trainer demonstrates \nthe full sequence once without explanation.\nUse a clear voice and \ncorrect timing between each cheer.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: Baris Akan Beri Tiga Sorakan Kepada (Rank & Name or Appointment), Hip, Hip, …Hooray (x3)",
+      "action": "Trainer demonstrates the full sequence once without explanation.\nUse a clear voice and correct timing between each cheer.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Baris Akan Beri Tiga Sorakan Kepada (Rank & Name or Appointment), Hip, Hip, punch out right hand and echo “Hooray.”",
-      "action": "Trainer demonstrates \nagain while explaining the key points: clear dedication, pause before call, unified response, and controlled enthusiasm.\n- Refer to Table 2-1-43.",
+      "action": "Trainer demonstrates again while explaining the key points: clear dedication, pause before call, unified response, and controlled enthusiasm.\nRefer to Table 2-1-43.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation.”.",
-      "action": "- Trainer breaks the sequence down. \n- Reinforce that the squad must respond only after the commander’s call and must stop after the third cheer.\n- Refer to Table 2-1-43 to 44.",
+      "action": "Trainer breaks the sequence down.\nReinforce that the squad must respond only after the commander’s call and must stop after the third cheer.\nRefer to Table 2-1-43 to 44.",
       "status": "present"
      },
      {
       "stage": "Question",
-      "what_to_do_or_say": "“How many times is the cheer repeated?”\n\n“What must the squad do after the third cheer?”",
-      "action": "Check understanding of \ncommand and meaning.",
+      "what_to_do_or_say": "“How many times is the cheer repeated?”\n“What must the squad do after the third cheer?”",
+      "action": "Check understanding of command and meaning.",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute \n\n\nCommand: Baris Akan Beri Tiga Sorakan Kepada (Rank & Name or Appointment), Hip, Hip, …Hooray (x3)",
-      "action": "Squad practice. \nCheck volume, timing \nbetween each cheer, enthusiasm and togetherness. \nCorrect weak response, \nearly shouting, uneven timing or lack of discipline after the final cheer.",
+      "what_to_do_or_say": "“Squad, on my command, execute\nCommand: Baris Akan Beri Tiga Sorakan Kepada (Rank & Name or Appointment), Hip, Hip, …Hooray (x3)",
+      "action": "Squad practice.\nCheck volume, timing between each cheer, enthusiasm and togetherness.\nCorrect weak response, early shouting, uneven timing or lack of discipline after the final cheer.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "Command: “Semula”",
-      "action": "In the event, the execution \nof drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
+      "action": "In the event, the execution of drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
       "status": "present"
      }
     ],
@@ -10733,8 +10829,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",
@@ -11224,8 +11322,10 @@
        "status": "present"
       },
       {
-       "text": "2 secs",
-       "status": "present"
+       "text": "1 sec",
+       "status": "present",
+       "source_text": "2 secs",
+       "corrected": "pause-1-sec"
       },
       {
        "text": "Sharp & distant tone",
@@ -11306,14 +11406,14 @@
     "rows": [
      {
       "word_of_command": "Ta’at Seti-A",
-      "quick_time_when_given": "-",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“Up” in Quick Time",
       "squad_call_out": "",
       "placeholders": []
      },
      {
       "word_of_command": "Sedi-A",
-      "quick_time_when_given": "-",
+      "quick_time_when_given": "",
       "slow_time_when_given": "“Down” in Quick Time",
       "squad_call_out": "",
       "placeholders": []
@@ -11400,11 +11500,9 @@
         ]
        },
        "common_faults": [
-        "Right hand fist is not at",
-        "the heart position.",
+        "Right hand fist is not at the heart position.",
         "Did not clench right fist.",
-        "Left arm not by the side",
-        "of the body."
+        "Left arm not by the side of the body."
        ]
       },
       {
@@ -11544,26 +11642,32 @@
     "rows": [
      {
       "stage": "Formation of Squad",
+      "what_to_do_or_say": "“Squad, Sedi-A”",
+      "action": "Form the squad with reference to Table 2-1-50",
+      "status": "present"
+     },
+     {
+      "stage": "Formation of Squad",
       "what_to_do_or_say": "",
-      "action": "Ensure the squad is \nproperly dressed, silent and ready.",
+      "action": "Ensure the squad is properly dressed, silent and ready.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "“The next drill is Recitation of Pledge or Creed.”",
-      "action": "Explain the significance \nof the pledge or creed.\nEmpahsise posture, voice, projection, correct pace, synchronization and respect.",
+      "action": "Explain the significance of the pledge or creed.\nEmpahsise posture, voice, projection, correct pace, synchronization and respect.",
       "status": "present"
      },
      {
       "stage": "Explanation",
-      "what_to_do_or_say": "“The commands are:”\n\nTa’at Seti-A",
-      "action": "Highlight right fist over \nthe heart before reciting required for parade or ceremony.\n\nCut down right hand \nsharply to Attention position.",
+      "what_to_do_or_say": "“The commands are:”\nTa’at Seti-A",
+      "action": "Highlight right fist over the heart before reciting required for parade or ceremony.\nCut down right hand sharply to Attention position.",
       "status": "present"
      },
      {
       "stage": "Explanation",
       "what_to_do_or_say": "Command: Sedi-A",
-      "action": "Highlight right fist over \nthe heart before reciting required for parade or ceremony.\n\nCut down right hand \nsharply to Attention position.",
+      "action": "Highlight right fist over the heart before reciting required for parade or ceremony.\nCut down right hand sharply to Attention position.",
       "status": "present"
      },
      {
@@ -11574,38 +11678,38 @@
      },
      {
       "stage": "Demonstration",
-      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”. \n\nCommand: Ta’at Seti-A\nCommand: Sedi-A",
-      "action": "Trainer demonstrates \nthe full sequence without explanation.\nShow correct posture, \nhand position, pace of recitation and recovery after completion.",
+      "what_to_do_or_say": "“Watch my demonstration, without explanation. Do not follow”.\nCommand: Ta’at Seti-A\nCommand: Sedi-A",
+      "action": "Trainer demonstrates the full sequence without explanation.\nShow correct posture, hand position, pace of recitation and recovery after completion.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration, with explanation. On the command Ta’at Seti-A, raise right fist to the heart position.”",
-      "action": "Trainer demonstrates \nagain while explaining the key points: starting position, hand movement, voice projection, pacing, unity and disciplined recovery. \n- Refer to Table 2-1-48.",
+      "action": "Trainer demonstrates again while explaining the key points: starting position, hand movement, voice projection, pacing, unity and disciplined recovery.\nRefer to Table 2-1-48.",
       "status": "present"
      },
      {
       "stage": "Demonstration",
       "what_to_do_or_say": "“Watch my demonstration in stages with explanation.”.",
-      "action": "- Trainer breaks the sequence down. \n- Reinforce that the squad must not rush, mumble, move unnecessarily or lower the hand before command.\n- Refer to Table 2-1-48 to 49.",
+      "action": "Trainer breaks the sequence down.\nReinforce that the squad must not rush, mumble, move unnecessarily or lower the hand before command.\nRefer to Table 2-1-48 to 49.",
       "status": "present"
      },
      {
       "stage": "Question",
       "what_to_do_or_say": "“What position must the squad be in before reciting the Pledge?”",
-      "action": "Check understanding of \ncommand and meaning.  \nExpected answers: Start \nfrom Sedi-A",
+      "action": "Check understanding of command and meaning.\nExpected answers: Start from Sedi-A",
       "status": "present"
      },
      {
       "stage": "Practice",
-      "what_to_do_or_say": "“Squad, on my command, execute \n\nCommand: Ta’at Seti-A\nCommand: Sedi-A",
-      "action": "Squad practice. \nCheck posture, hand \nposition, voice projection, pace and discipline after recitation. \nCorrect rushing, uneven \ntiming, poor posture or premature movement.",
+      "what_to_do_or_say": "“Squad, on my command, execute\nCommand: Ta’at Seti-A\nCommand: Sedi-A",
+      "action": "Squad practice.\nCheck posture, hand position, voice projection, pace and discipline after recitation.\nCorrect rushing, uneven timing, poor posture or premature movement.",
       "status": "present"
      },
      {
       "stage": "Practice",
       "what_to_do_or_say": "Command: “Semula”",
-      "action": "In the event, the execution \nof drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
+      "action": "In the event, the execution of drill is not up to standard, the trainer will give the command to bring the contingent to last position “as you were”.",
       "status": "present"
      }
     ],
@@ -11844,8 +11948,10 @@
         "status": "present"
        },
        {
-        "text": "2 secs",
-        "status": "present"
+        "text": "1 sec",
+        "status": "present",
+        "source_text": "2 secs",
+        "corrected": "pause-1-sec"
        },
        {
         "text": "Sharp & distant tone",

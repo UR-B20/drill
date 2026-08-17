@@ -30,8 +30,10 @@ export function parseAnatomy(table: TableRec): Anatomy | null {
     const isCmdRow = i === cmdRowIdx;
     const vals = isCmdRow ? r.slice(1) : r.slice(r[0]?.text === "" ? 1 : 0);
     const texts = vals.map((c) => c.text);
-    if (texts.filter((t) => t !== "").length < 2) continue;
-    if (!isCmdRow && r.length < 4) continue;
+    // Keep any row carrying command text. Some variants are only partly
+    // filled in the draft (At Ease's "Rehatkan Diri" has no breakdown) —
+    // those are shown with the missing parts marked, not dropped.
+    if (texts.filter((t) => t !== "").length === 0) continue;
     variants.push({
       introductory: texts[0] ?? "",
       cautionary: texts[1] ?? "",
@@ -73,12 +75,14 @@ export default function AnatomyStrip({ table }: { table: TableRec }) {
   const play = () => {
     timers.current.forEach(clearTimeout);
     timers.current = [];
-    const pauseMs = anatomy.pauseMs ?? 2000;
+    // The spoken parts run short so the regulation pause reads as the long
+    // beat it is — the point of the rehearsal is feeling that gap.
+    const pauseMs = anatomy.pauseMs ?? 1000;
     const steps: [Phase, number][] = [
-      ["introductory", 1200],
-      ["cautionary", 1400],
+      ["introductory", 400],
+      ["cautionary", 600],
       ["pause", pauseMs],
-      ["executionary", 900],
+      ["executionary", 450],
       ["idle", 0],
     ];
     let t = 0;
@@ -103,6 +107,8 @@ export default function AnatomyStrip({ table }: { table: TableRec }) {
     </div>
   );
 
+  const incomplete = !v.cautionary && !v.executionary;
+
   return (
     <div className="anatomy">
       <div className="anatomy-strip">
@@ -111,6 +117,12 @@ export default function AnatomyStrip({ table }: { table: TableRec }) {
         {seg("pause", "Pause", v.pause, anatomy.tones.pause)}
         {seg("executionary", "Executionary", v.executionary, anatomy.tones.executionary)}
       </div>
+      {incomplete && (
+        <div className="cadence-note">
+          The manual does not break this command down. Only the command itself
+          is given.
+        </div>
+      )}
       <div className="anatomy-controls">
         {anatomy.variants.length > 1 && (
           <select
@@ -127,7 +139,7 @@ export default function AnatomyStrip({ table }: { table: TableRec }) {
           </select>
         )}
         <button className="play-btn" onClick={play} disabled={phase !== "idle"}>
-          {phase === "idle" ? "▶ Rehearse timing" : "…"}
+          {phase === "idle" ? "▶ Rehearse timing" : "▶ Rehearsing"}
         </button>
       </div>
     </div>

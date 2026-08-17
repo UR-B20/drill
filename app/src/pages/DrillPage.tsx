@@ -68,8 +68,8 @@ export default function DrillPage({
         <PendingPanel
           reason={
             drill.content_status === "name_only"
-              ? "This drill is listed in the manual's roster, but its instruction tables are not yet present in the source draft."
-              : `Some content for this drill is still pending in the source draft${drill.missing_tables.length ? ` (missing: ${drill.missing_tables.join(", ")})` : ""}.`
+              ? "This drill is on the roster, but the manual has no instruction tables for it yet."
+              : `Part of this drill is not in the manual yet${drill.missing_tables.length ? ` (missing: ${drill.missing_tables.join(", ")})` : ""}.`
           }
         />
       )}
@@ -82,7 +82,7 @@ export default function DrillPage({
           >
             <AnatomyStrip table={drill.structure_of_command} />
             <details className="source-details">
-              <summary>Source table (verbatim)</summary>
+              <summary>Show source table</summary>
               <VerbatimTable table={drill.structure_of_command} />
             </details>
           </Section>
@@ -182,14 +182,14 @@ export default function DrillPage({
           provenance={drill.moi_sequence.table.provenance}
         >
           {!drill.moi_sequence.complete && (
-            <PendingPanel reason="This drill's Sequence of Instructions table exists in the draft but its content rows are still empty." />
+            <PendingPanel reason="Some rows of this sequence are empty in the manual." />
           )}
           {drill.moi_sequence.rows.map((row, i) =>
             row.status === "pending" ? (
               <div className="woc-card" key={i}>
                 <div className="eyebrow">{row.stage}</div>
                 <div style={{ color: "var(--muted)", fontSize: 14 }}>
-                  Pending in source draft.
+                  Not filled in yet.
                 </div>
               </div>
             ) : (
@@ -261,8 +261,7 @@ export default function DrillPage({
             </div>
           ))}
           <div className="provenance">
-            Companion video ({video.format}, {video.duration_seconds}s) — on-screen
-            text transcribed verbatim from the clip.
+            Cues below are the on-screen text from the clip.
           </div>
         </Section>
       )}
@@ -302,8 +301,7 @@ export default function DrillPage({
                 </div>
               ))}
               <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
-                Self and buddy records only — a qualified trainer confirms the
-                standard in person.
+                Your own and buddy records. Your trainer confirms the standard.
               </p>
             </>
           );
