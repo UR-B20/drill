@@ -18,11 +18,11 @@ export function PendingPanel({
 }) {
   return (
     <div className="pending-panel">
-      <span className="label">Pending — not yet authorized</span>
+      <span className="label">Pending</span>
       <div>{reason}</div>
       {verbatim && verbatim.length > 0 && (
         <div className="mono" style={{ marginTop: 4 }}>
-          Source marker: {verbatim.join(" ")}
+          Marked in the manual as: {verbatim.join(" ")}
         </div>
       )}
       {provenance && <div className="provenance">{provenanceLine(provenance)}</div>}
@@ -85,7 +85,7 @@ export function FigureView({ fig, alt }: { fig: FigureRef; alt: string }) {
   if (fig.status === "pending") {
     return (
       <PendingPanel
-        reason="Figure not yet provided in the source manual."
+        reason="No figure for this stage in the manual."
         verbatim={fig.placeholder_text_verbatim}
       />
     );
@@ -97,7 +97,7 @@ export function FigureView({ fig, alt }: { fig: FigureRef; alt: string }) {
       ))}
       {fig.placeholder_text_verbatim && fig.placeholder_text_verbatim.length > 0 && (
         <span className="update-flag">
-          Draft image — flagged in source: {fig.placeholder_text_verbatim.join(" ")}
+          Marked for update in the manual: {fig.placeholder_text_verbatim.join(" ")}
         </span>
       )}
     </div>

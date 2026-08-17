@@ -47,6 +47,17 @@ python3 scripts/export_contract.py
 
 Both scripts are deterministic — output diffs correspond 1:1 to source diffs.
 
+## Corrections
+
+`scripts/ingest_chapter2.py` carries a small `CORRECTIONS` table for changes
+approved by the content owner that the source manual has not yet adopted. Each
+one is applied after extraction, keeps the original value in `source_text`, and
+is listed in `corrections_applied` in the output JSON. Currently:
+
+| Correction | Change | Status |
+|---|---|---|
+| `pause-1-sec` | Regulation pause `2 secs` → `1 sec` (all 9 Structure of Command tables) | Source draft still reads "2 secs" — needs manual revision |
+
 ## Current content coverage (from the 13 Aug source draft)
 
 9 drills complete (Attention, At Ease, Turning During Halt, Dressing, Bow,

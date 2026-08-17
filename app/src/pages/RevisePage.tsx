@@ -66,8 +66,7 @@ function MatchingDrill({ content }: { content: Content }) {
   return (
     <>
       <p style={{ fontSize: 14, color: "var(--muted)", marginTop: 8 }}>
-        Match each command to its meaning. Both columns are taken verbatim from
-        the manual's roster table.
+        Match each command to its meaning.
       </p>
       <div className="match-grid">
         <div>
@@ -97,7 +96,7 @@ function MatchingDrill({ content }: { content: Content }) {
       </div>
       {done && (
         <div className="result-line">
-          Round complete — all {pairs.length} pairs match the manual.
+          Round complete.
           <button className="play-btn" style={{ marginLeft: 10 }} onClick={() => { setMatched(new Set()); setRound(round + 1); }}>
             Next round
           </button>
@@ -142,8 +141,8 @@ function QuestionPrompts({ content }: { content: Content }) {
   return (
     <>
       <p style={{ fontSize: 14, color: "var(--muted)", marginTop: 8 }}>
-        These are the manual's own Question-stage checks. Answer aloud, then
-        reveal the manual's pointer to the expected answer.
+        Questions from the Question stage of each drill. Answer out loud, then
+        check.
       </p>
       {prompts.map((p, i) => (
         <div className="woc-card" key={i}>
@@ -163,7 +162,7 @@ function QuestionPrompts({ content }: { content: Content }) {
               className="reveal-btn"
               onClick={() => setRevealed(new Set([...revealed, i]))}
             >
-              Reveal source answer
+              Show answer
             </button>
           )}
         </div>
@@ -178,7 +177,7 @@ export default function RevisePage({ content }: { content: Content }) {
       <h1 className="command-display" style={{ fontSize: "clamp(28px,8vw,40px)" }}>
         Self-check
       </h1>
-      <div className="gloss-bar">Verbatim recall — no generated content</div>
+      <div className="gloss-bar">Chapter 2 · Section 1</div>
       <Section title="Command ↔ meaning" provenance={content.roster[0]?.provenance}>
         <MatchingDrill content={content} />
       </Section>

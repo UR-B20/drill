@@ -77,8 +77,8 @@ export default function App() {
       </header>
       {!isTrainer && (
         <div className="supervision-note">
-          Revision &amp; reference aid — execution standards are confirmed by a
-          qualified trainer in person.
+          Reference and revision. Your trainer confirms the standard on the
+          parade square.
         </div>
       )}
       <main className="app-main">

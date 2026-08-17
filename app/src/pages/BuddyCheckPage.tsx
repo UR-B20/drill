@@ -64,8 +64,7 @@ export default function BuddyCheckPage({ content }: { content: Content }) {
           </div>
         ))}
         <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 12 }}>
-          Saved to this device as a buddy check. Only a qualified trainer can
-          confirm the standard is met.
+          Saved on this device. Your trainer confirms the standard.
         </p>
         <button className="big-btn" onClick={() => navigate(`/drill/${drill.drill_id}`)}>
           Back to {drill.names.english}
@@ -94,11 +93,11 @@ export default function BuddyCheckPage({ content }: { content: Content }) {
       </h1>
       <div className="gloss-bar">{drill.names.english}</div>
       <p style={{ fontSize: 14.5, marginTop: 10 }}>
-        Hand this phone to your buddy. Buddy: watch the drill executed, and tap
-        every fault you observe — these are the manual's own fault points.
+        Hand the phone to your buddy. Buddy: watch the drill and tap each
+        fault you see.
       </p>
       {stageGroups.length === 0 ? (
-        <PendingPanel reason="No Common Faults are listed for this drill in the source draft, so a structured buddy check is not available yet." />
+        <PendingPanel reason="The manual lists no common faults for this drill, so there is nothing to check against." />
       ) : (
         stageGroups.map((g) => (
           <div key={g.label} style={{ marginTop: 18 }}>

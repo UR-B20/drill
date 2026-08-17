@@ -28,6 +28,51 @@ from docx.table import Table
 from docx.text.paragraph import Paragraph
 
 PLACEHOLDER_RE = re.compile(r"\[Insert[^\]]*\]", re.IGNORECASE)
+BULLET_RE = re.compile(r"^[-–—•*]\s*")
+PAUSE_2SEC_RE = re.compile(r"^\s*2\s*secs?\s*$", re.IGNORECASE)
+
+# Owner-approved corrections applied after extraction. Each is recorded in the
+# output so the change is visible and traceable — the app never silently
+# diverges from the source. These exist to be pushed back into the manual.
+CORRECTIONS = [
+    {
+        "id": "pause-1-sec",
+        "applies_to": "structure_of_command.delivery_style.pause",
+        "match": PAUSE_2SEC_RE,
+        "replacement": "1 sec",
+        "reason": "Regulation pause corrected to 1 sec by the content owner; "
+        "source draft still reads '2 secs' and needs revision.",
+        "authority": "content owner",
+    },
+]
+
+
+def join_wrapped(text):
+    """Split a table cell into logical items, re-joining Word's hard line
+    wraps. A line continues the previous item when it starts with a lowercase
+    letter or a digit; an explicit bullet marker always starts a new item.
+
+    The 13 Aug draft stores mid-sentence wraps as real line breaks, so a naive
+    newline split shatters one fault into fragments ("Not making a full" /
+    "turn with body and shoulders...").
+    """
+    items = []
+    for raw_line in text.split("\n"):
+        line = raw_line.strip()
+        if not line:
+            continue
+        if BULLET_RE.match(line):
+            items.append(BULLET_RE.sub("", line).strip())
+        elif items and (line[0].islower() or line[0].isdigit()):
+            items[-1] = f"{items[-1]} {line}"
+        else:
+            items.append(line)
+    return [i for i in items if i]
+
+
+def tidy(text):
+    """Same wrap-joining, returned as text with one logical item per line."""
+    return "\n".join(join_wrapped(text))
 
 SOURCE_DOC = {
     "source_doc_id": "saf-drill-manual",
@@ -192,14 +237,24 @@ def classify(caption, grid=None):
     return kind, drill
 
 
-def split_lines(text):
-    return [ln.strip() for ln in text.split("\n") if ln.strip()]
+def data_rows(grid, header_first_cell):
+    """Return the data rows, skipping row 0 only when it really is the header.
+
+    Not every table in the draft has one — the Dressing MOI table starts
+    straight on a data row, and blindly dropping row 0 lost its Formation of
+    Squad content.
+    """
+    if grid and grid[0] and grid[0][0]["text"].strip().lower().startswith(
+        header_first_cell.lower()
+    ):
+        return grid[1:]
+    return grid
 
 
 def parse_stages(grid):
     """Rows: Stage | Command | Figure Reference | Common Fault."""
     stages = []
-    for row in grid[1:]:
+    for row in data_rows(grid, "stage"):
         cells = row + [{"text": "", "status": "empty"}] * (4 - len(row))
         fig = cells[2]
         figure = {
@@ -212,16 +267,16 @@ def parse_stages(grid):
             figure["status"] = "present"
         stages.append({
             "stage_label": cells[0]["text"],
-            "command_verbatim": cells[1]["text"],
+            "command_verbatim": tidy(cells[1]["text"]),
             "figure_reference": figure,
-            "common_faults": split_lines(cells[3]["text"]),
+            "common_faults": join_wrapped(cells[3]["text"]),
         })
     return stages
 
 
 def parse_layout_ratio(grid):
     rows = []
-    for row in grid[1:]:
+    for row in data_rows(grid, "type of drills"):
         cells = row + [{"text": ""}] * (4 - len(row))
         rows.append({
             "drill_type": cells[0]["text"],
@@ -235,16 +290,16 @@ def parse_layout_ratio(grid):
 def parse_moi(grid):
     rows = []
     complete = True
-    for row in grid[1:]:
+    for row in data_rows(grid, "stage"):
         cells = row + [{"text": "", "status": "empty"}] * (3 - len(row))
         say, action = cells[1], cells[2]
-        empty = say["status"] == "empty" and action["status"] == "empty"
+        empty = not say["text"].strip() and not action["text"].strip()
         if empty:
             complete = False
         rows.append({
-            "stage": cells[0]["text"],
-            "what_to_do_or_say": say["text"],
-            "action": action["text"],
+            "stage": cells[0]["text"].strip(),
+            "what_to_do_or_say": tidy(say["text"]),
+            "action": tidy(action["text"]),
             "status": "pending" if empty else "present",
         })
     return rows, complete
@@ -252,13 +307,13 @@ def parse_moi(grid):
 
 def parse_word_of_command(grid):
     rows = []
-    for row in grid[1:]:
+    for row in data_rows(grid, "word of command"):
         cells = row + [{"text": "", "status": "empty"}] * (4 - len(row))
         rows.append({
-            "word_of_command": cells[0]["text"],
-            "quick_time_when_given": cells[1]["text"],
-            "slow_time_when_given": cells[2]["text"],
-            "squad_call_out": cells[3]["text"],
+            "word_of_command": tidy(cells[0]["text"]),
+            "quick_time_when_given": tidy(cells[1]["text"]),
+            "slow_time_when_given": tidy(cells[2]["text"]),
+            "squad_call_out": tidy(cells[3]["text"]),
             "placeholders": cells[0].get("placeholders", []),
         })
     return rows
@@ -290,6 +345,7 @@ def main():
         for d in DRILL_ORDER
     }
     glossary, roster, orphan_tables = [], [], []
+    applied_corrections = []
 
     last_caption = ""
     prev_texts = []  # recent paragraph texts, for caption lookup
@@ -313,6 +369,26 @@ def main():
             caption = grid[0][0]["text"]
             grid = grid[1:]
         kind, drill = classify(caption, grid)
+
+        # Apply owner-approved corrections, keeping the source text alongside.
+        if kind == "structure_of_command":
+            for row in grid:
+                if not row or not row[0]["text"].lower().startswith("delivery style"):
+                    continue
+                for cell in row:
+                    for corr in CORRECTIONS:
+                        if corr["match"].match(cell["text"]):
+                            applied_corrections.append({
+                                "correction_id": corr["id"],
+                                "table_caption": caption,
+                                "source_text": cell["text"],
+                                "corrected_text": corr["replacement"],
+                                "reason": corr["reason"],
+                                "authority": corr["authority"],
+                            })
+                            cell["source_text"] = cell["text"]
+                            cell["text"] = corr["replacement"]
+                            cell["corrected"] = corr["id"]
         # The draft contains at least one layout table whose caption names the
         # wrong drill; the table's own first column names the drill it belongs
         # to, so for layout tables the row content is authoritative.
@@ -333,15 +409,16 @@ def main():
         }
 
         if kind == "glossary":
-            for row in grid[1:]:
+            for row in data_rows(grid, "malay word"):
                 if len(row) >= 2:
                     glossary.append({"malay": row[0]["text"], "english": row[1]["text"],
                                      "provenance": {**SOURCE_DOC, "table_caption": caption}})
         elif kind == "roster":
-            for row in grid[1:]:
+            for row in data_rows(grid, "s/n"):
                 cells = row + [{"text": ""}] * (4 - len(row))
-                roster.append({"sn": cells[0]["text"], "drill": cells[1]["text"],
-                               "command": cells[2]["text"], "meaning": cells[3]["text"],
+                roster.append({"sn": cells[0]["text"], "drill": tidy(cells[1]["text"]),
+                               "command": tidy(cells[2]["text"]),
+                               "meaning": tidy(cells[3]["text"]),
                                "provenance": {**SOURCE_DOC, "table_caption": caption}})
         elif drill:
             rec = drills[drill]
@@ -437,6 +514,7 @@ def main():
             "generator": "scripts/ingest_chapter2.py",
             "no_llm_in_path": True,
         },
+        "corrections_applied": applied_corrections,
         "glossary": glossary,
         "roster": roster,
         "drills": [drills[d] for d in DRILL_ORDER],

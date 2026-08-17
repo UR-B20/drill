@@ -101,14 +101,12 @@ export default function RecordCompare({
       {error && <div className="cadence-note" style={{ color: "var(--fault)" }}>{error}</div>}
       {!referenceSrc && (
         <div className="cadence-note">
-          No approved reference audio exists for this drill yet — record and
-          replay your own call; a reference clip will appear here once one is
-          authorized.
+          No reference clip for this drill yet. Record and replay your own
+          call in the meantime.
         </div>
       )}
       <div className="cadence-note">
-        Nothing is scored or uploaded — the recording stays on this device and
-        is discarded when you leave. Your ear, and your trainer, are the judges.
+        Recordings stay on this device and are deleted when you leave.
       </div>
     </div>
   );
